@@ -1,0 +1,71 @@
+---
+title: "Big data & political science research"
+subtitle: "Draft notes & outline"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Draft motivation: 
+
+Training, job market demands, sexy research, etc. increasingly value the ability to work with big data. It's not always clear what one means by big data or how one works with it, but there is a consensus that doing so requires skills. We agree, and we present some of these skills here, along with a description of what big data means and in what ways we work with it.
+
+
+
+## What is big data?
+
+- Operational definition
+  - e.g. "Volume, Variety, and Velocity"; Harford (re: "found data")
+  - 'digital exhaust' / metadata vs. purpose-built systems
+- How/why big data became what it is in the zeitgeist
+  - Classic advantages: Big / always on
+  - Classic disadvantages: metered/restricted access + expertise barrier
+
+
+
+## First skill of working w/big data: *Research Design*
+
+Systems that collect big data are purpose-built, and the purpose is never political science research. This holds true even for the most research-friendly data sources. 
+
+<!-- Include example about retsinformation.dk?? Ministry titles in official metadata reflect "current" institutional structure and throws out information contemporary to older data. This creates a massive headache for researchers, but it makes perfect sense for running an efficient bookkeeping operation for the central bureaucracy. Furthermore, there are not metadata linking laws to the decrees, regulations, etc. that they enable. This system would be superfluous and redundant since retsinformation is a broad-based clearing house and wouldn't necessarily be the tool of choice for legal advisors drafing secondary legislation within the line ministries. The data in the official gazette are complete, but they come with major biases caused directly by the fact that--even this public, non-partisan resource--is built with a purpose that is different from (not necessarily opposed to) political science research. 
+
+To cap it off, retsinformation.dk isn't finished evolving. It will continue to develop in ways that may or may not benefit political science research as its maintainers' and users' needs and preferences change.-->
+
+- Big data typically *not designed for research*, i.e.
+  - it's dirty (re: Salganik) -- human behavior is mixed together with actions taken by bots/automated systems
+  - drifting -- Needs of *actual* system maintainers / users may be completely orthogonal to needs of political science research (or even opposed, consider FB)
+  - algorithmically confounded -- large-scale systems have robot nannies. These include everything from spell checkers to YouTube's recommendation algorithm. The observed behavior we find in big data is a consequence of the (generally) unobservable interaction between humans and these algorithms.
+  
+- Standard sampling issues (nonrepresentative, systematic sampling bias)
+
+
+
+
+## What to do with it:
+
+- Pattern discovery (dimensionality reduction -- a la argument in Lowe 2013WP)
+  - Generic data: Clustering, IRT, etc.
+  - Text: Topic modeling, text scaling, dictionaries
+  - Fundamental unity of goals and approach
+  - Variety in methods results from variation in:
+    - Assumptions re: underlying model/geometry of latent space
+    - Related to above: something like, "format" of output
+    - Structure/nature of input data
+    - Amount of domain expertise applied to structure results
+    - Assumptions about what is correlated with what
+    - Level of computational intensity
+
+- Classification / prediction
+
+- Explanatory modeling 
+
+
+
+<!-- ## Skills -->
+
+<!-- - Data collection / management -->
+<!-- -  -->
+
