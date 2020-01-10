@@ -4,7 +4,21 @@ author:
   - Frederik Hjorth
   - Matt W. Loftis
 subtitle: "Udkast, januar 2020"
-output: word_document
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  pdf_document:
+    citation_package: natbib
+    fig_caption: yes
+    keep_tex: yes
+    latex_engine: pdflatex
+    template: fghjorth-latex-ms.tex
+  word_document: default
+biblio-style: apsr
+fontfamily: mathptmx
+fontsize: 12pt
+geometry: margin=1in
+bibliography: references.bib
+spacing: double
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +30,7 @@ Draft motivation:
 
 Training, job market demands, sexy research, etc. increasingly value the ability to work with big data. It's not always clear what one means by big data or how one works with it, but there is a consensus that doing so requires skills. We agree, and we present some of these skills here, along with a description of what big data means and in what ways we work with it.
 
-
+cites: @mullainathan2017machine, @varian2014big
 
 ## What is big data?
 
