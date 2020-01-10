@@ -1,0 +1,213 @@
+\documentclass[12pt,]{article}
+\usepackage[]{mathptmx}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={`Big data' og politologisk datavidenskab},
+            pdfauthor={Frederik Hjorth; Matt W. Loftis},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apsr}
+\usepackage{graphicx}
+% grffile has become a legacy package: https://ctan.org/pkg/grffile
+\IfFileExists{grffile.sty}{%
+\usepackage{grffile}
+}{}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{`Big data' og politologisk datavidenskab}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \subtitle{Udkast, januar 2020}
+  \author{Frederik Hjorth \\ Matt W. Loftis}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+\maketitle
+
+Draft motivation:
+
+Training, job market demands, sexy research, etc. increasingly value the
+ability to work with big data. It's not always clear what one means by
+big data or how one works with it, but there is a consensus that doing
+so requires skills. We agree, and we present some of these skills here,
+along with a description of what big data means and in what ways we work
+with it.
+
+cites: \citet{mullainathan2017machine}, \citet{varian2014big}
+
+\hypertarget{what-is-big-data}{%
+\subsection{What is big data?}\label{what-is-big-data}}
+
+\begin{itemize}
+\tightlist
+\item
+  Operational definition
+
+  \begin{itemize}
+  \tightlist
+  \item
+    e.g.~``Volume, Variety, and Velocity''; Harford (re: ``found data'')
+  \item
+    `digital exhaust' / metadata vs.~purpose-built systems
+  \end{itemize}
+\item
+  How/why big data became what it is in the zeitgeist
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Classic advantages: Big / always on
+  \item
+    Classic disadvantages: metered/restricted access + expertise barrier
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{first-skill-of-working-wbig-data-research-design}{%
+\subsection{\texorpdfstring{First skill of working w/big data:
+\emph{Research
+Design}}{First skill of working w/big data: Research Design}}\label{first-skill-of-working-wbig-data-research-design}}
+
+Systems that collect big data are purpose-built, and the purpose is
+never political science research. This holds true even for the most
+research-friendly data sources.
+
+\begin{itemize}
+\tightlist
+\item
+  Big data typically \emph{not designed for research}, i.e.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    it's dirty (re: Salganik) -- human behavior is mixed together with
+    actions taken by bots/automated systems
+  \item
+    drifting -- Needs of \emph{actual} system maintainers / users may be
+    completely orthogonal to needs of political science research (or
+    even opposed, consider FB)
+  \item
+    algorithmically confounded -- large-scale systems have robot
+    nannies. These include everything from spell checkers to YouTube's
+    recommendation algorithm. The observed behavior we find in big data
+    is a consequence of the (generally) unobservable interaction between
+    humans and these algorithms.
+  \end{itemize}
+\item
+  Standard sampling issues (nonrepresentative, systematic sampling bias)
+\end{itemize}
+
+\hypertarget{what-to-do-with-it}{%
+\subsection{What to do with it:}\label{what-to-do-with-it}}
+
+\begin{itemize}
+\item
+  Pattern discovery (dimensionality reduction -- a la argument in Lowe
+  2013WP)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Generic data: Clustering, IRT, etc.
+  \item
+    Text: Topic modeling, text scaling, dictionaries
+  \item
+    Fundamental unity of goals and approach
+  \item
+    Variety in methods results from variation in:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Assumptions re: underlying model/geometry of latent space
+    \item
+      Related to above: something like, ``format'' of output
+    \item
+      Structure/nature of input data
+    \item
+      Amount of domain expertise applied to structure results
+    \item
+      Assumptions about what is correlated with what
+    \item
+      Level of computational intensity
+    \end{itemize}
+  \end{itemize}
+\item
+  Classification / prediction
+\item
+  Explanatory modeling
+\end{itemize}
+
+\bibliography{references.bib}
+
+
+\end{document}
