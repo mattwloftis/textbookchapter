@@ -32,11 +32,16 @@ Training, job market demands, sexy research, etc. increasingly value the ability
 
 cites: @mullainathan2017machine, @varian2014big
 
-## What is big data?
+## Hvad er big data? 
 
-- Operational definition
-  - e.g. "Volume, Variety, and Velocity"; Harford (re: "found data")
-  - 'digital exhaust' / metadata vs. purpose-built systems
+Big data has been credited with enabling an emerging field of computational social science with "the capacity to collect and analyze data with an unprecedented breadth and depth and scale" [@lazeretal]. Yet, the concept of big data lives two lives. On the one hand the popular definition is associated with exciting and futuristic promises of data-driven science and technology. On the other hand is what we might call the operational definition of how massive data sets are collected, stored, and used currently by social scientists. To unpack the role of big data in political science research, we first consider the second aspect of the concept and then circle back to examine what to believe about the first aspect.
+
+One widely familiar operational definition identifies big data with the so-called three Vs: Volume, Variety, and Velocity [@laney01]. Big data, here, refers to fast-evolving and very large data sets--including even data too large to store on a desktop computer--that contain lots of variation. Data sources of this nature are often interesting to social science: search engine logs, social media activity, government administrative records, mobile telephone records, or even data stored by passive monitoring conducted by digital devices in the physical world have been mobilized for social science research [@salganik17]. Accessing these data requires partnerships with their owners--phone companies, governments, technology companies, etc. This can mean writing software to access websites or remote databases or can involve more formalized partnerships to share information securely [@EL14].
+<!-- ^[e.g. application programming interfaces (APIs)] -->
+
+The hurdle of accessing big data underscores a basic difference between it and traditional social science data: traditional social science data were collected for the purpose of doing social science. Social scientists must always consider the sources and the nature of our data, and big data has sometimes been referred to as "found data" or "digital exhaust" [@harford14]. What does this mean? Virtually all big data are purpose-built for goals *other than* social research. Metadata like timestamps, follower counts, or activity frequencies on social media web sites are not stored for science or, necessarily, according to scientific standards. Although they may be useful, their scientific value is an unintended byproduct (i.e. exhaust) of business or government activity. As such, when applying big data to social science research we must always probe the implications of the data's purpose for our scientific applications.^[As @salganik17 puts it, the challenges and opportunities created by big data follow from asking why the data were collected.]
+
+
 - How/why big data became what it is in the zeitgeist
   - Classic advantages: Big / always on
   - Classic disadvantages: metered/restricted access + expertise barrier
