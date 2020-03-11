@@ -1,5 +1,5 @@
 \documentclass[12pt,]{article}
-\usepackage[]{mathptmx}
+\usepackage[]{cochineal}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
@@ -31,11 +31,7 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apsr}
-\usepackage{graphicx}
-% grffile has become a legacy package: https://ctan.org/pkg/grffile
-\IfFileExists{grffile.sty}{%
-\usepackage{grffile}
-}{}
+\usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -53,7 +49,7 @@
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
+\setcounter{secnumdepth}{5}
 % Redefines (sub)paragraphs to behave more like sections
 \ifx\paragraph\undefined\else
 \let\oldparagraph\paragraph
@@ -83,7 +79,7 @@
   \title{`Big data' og politologisk datavidenskab}
     \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-  \subtitle{Udkast, januar 2020}
+  \subtitle{Udkast, april 2020}
   \author{Frederik Hjorth \\ Matt W. Loftis}
     \preauthor{\centering\large\emph}
   \postauthor{\par}
@@ -94,32 +90,83 @@
 \begin{document}
 \maketitle
 
-Draft motivation:
+`Big data' er overalt. Det gælder i dobbelt forstand: takket være
+drastiske stigninger i computeres hukommelse og regnekraft indeholder
+næsten alle computere i dag store, ustrukturerede datamængder. Mange af
+disse data er biprodukter af menneskelig adfærd, som i dag registreres
+og kvantificeres i historisk uset omfang. Men big data er også overalt i
+den forstand at begrebet `big data' og beslægtede begreber er blevet
+almindeligt kendte og bredt anvendte, og ikke mindst genstand for stor
+kommerciel interesse. En hyppigt citeret artikel fra \emph{Harvard
+Business Review} kaldte således ``data scientist'' for ``det 21.
+århundredes mest sexede job'' \citep{davenport2012data}.
 
-Training, job market demands, sexy research, etc. increasingly value the
-ability to work with big data. It's not always clear what one means by
-big data or how one works with it, but there is a consensus that doing
-so requires skills. We agree, and we present some of these skills here,
-along with a description of what big data means and in what ways we work
-with it.
+Alene den begrebslige udbredelse af big data gør det relevant at vide
+hvad det nærmere dækker over. Men big data er også reelt et væsentligt
+nybrud i forhold til de data og metoder, politologi og samfundsvidenskab
+traditionelt har betjent sig af. Big data muliggør analyser af
+politologiske emner som ville have været umulige med traditionelle
+metoder, men kræver også nye teknikker og metodiske værktøjer.
+
+Formålet med dette kapitel er at introducere til de datatyper og
+metoder, begrebet big data dækker over. Først opridser vi begrebets
+beytdning og historie. Dernæst diskuterer vi hvordan en række
+karakteristika ved big data skaber særlige udfordringer i forhold til at
+udvikle stærke forskningsdesigns. Herefter præsenterer vi en række
+specifikke tekniske værktøjer til behandling af big data. Afslutningsvis
+opridser vi nogle væsentlige etiske problematikker i relation til brugen
+af big data.
 
 cites: \citet{mullainathan2017machine}, \citet{varian2014big}
 
-\hypertarget{what-is-big-data}{%
-\subsection{What is big data?}\label{what-is-big-data}}
+\hypertarget{hvad-er-big-data}{%
+\subsection{Hvad er big data?}\label{hvad-er-big-data}}
+
+Big data has been credited with enabling an emerging field of
+computational social science with ``the capacity to collect and analyze
+data with an unprecedented breadth and depth and scale''
+\citep{lazeretal}. Yet, the concept of big data lives two lives. On the
+one hand the popular definition is associated with exciting and
+futuristic promises of data-driven science and technology. On the other
+hand is what we might call the operational definition of how massive
+data sets are collected, stored, and used currently by social
+scientists. To unpack the role of big data in political science
+research, we first consider the second aspect of the concept and then
+circle back to examine what to believe about the first aspect.
+
+One widely familiar operational definition identifies big data with the
+so-called three Vs: Volume, Variety, and Velocity \citep{laney01}. Big
+data, here, refers to fast-evolving and very large data sets--including
+even data too large to store on a desktop computer--that contain lots of
+variation. Data sources of this nature are often interesting to social
+science: search engine logs, social media activity, government
+administrative records, mobile telephone records, or even data stored by
+passive monitoring conducted by digital devices in the physical world
+have been mobilized for social science research \citep{salganik17}.
+Accessing these data requires partnerships with their owners--phone
+companies, governments, technology companies, etc. This can mean writing
+software to access websites or remote databases or can involve more
+formalized partnerships to share information securely \citep{EL14}.
+
+The hurdle of accessing big data underscores a basic difference between
+it and traditional social science data: traditional social science data
+were collected for the purpose of doing social science. Social
+scientists must always consider the sources and the nature of our data,
+and big data has sometimes been referred to as ``found data'' or
+``digital exhaust'' \citep{harford14}. What does this mean? Virtually
+all big data are purpose-built for goals \emph{other than} social
+research. Metadata like timestamps, follower counts, or activity
+frequencies on social media web sites are not stored for science or,
+necessarily, according to scientific standards. Although they may be
+useful, their scientific value is an unintended byproduct (i.e.~exhaust)
+of business or government activity. As such, when applying big data to
+social science research we must always probe the implications of the
+data's purpose for our scientific applications.\footnote{As
+  \citet{salganik17} puts it, the challenges and opportunities created
+  by big data follow from asking why the data were collected.}
 
 \begin{itemize}
 \tightlist
-\item
-  Operational definition
-
-  \begin{itemize}
-  \tightlist
-  \item
-    e.g.~``Volume, Variety, and Velocity''; Harford (re: ``found data'')
-  \item
-    `digital exhaust' / metadata vs.~purpose-built systems
-  \end{itemize}
 \item
   How/why big data became what it is in the zeitgeist
 
@@ -132,10 +179,9 @@ cites: \citet{mullainathan2017machine}, \citet{varian2014big}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{first-skill-of-working-wbig-data-research-design}{%
-\subsection{\texorpdfstring{First skill of working w/big data:
-\emph{Research
-Design}}{First skill of working w/big data: Research Design}}\label{first-skill-of-working-wbig-data-research-design}}
+\hypertarget{big-data-og-forskningsdesign}{%
+\subsection{Big data og
+forskningsdesign}\label{big-data-og-forskningsdesign}}
 
 Systems that collect big data are purpose-built, and the purpose is
 never political science research. This holds true even for the most
@@ -166,8 +212,8 @@ research-friendly data sources.
   Standard sampling issues (nonrepresentative, systematic sampling bias)
 \end{itemize}
 
-\hypertarget{what-to-do-with-it}{%
-\subsection{What to do with it:}\label{what-to-do-with-it}}
+\hypertarget{behandling-af-big-data}{%
+\subsection{Behandling af big data}\label{behandling-af-big-data}}
 
 \begin{itemize}
 \item
@@ -206,6 +252,10 @@ research-friendly data sources.
 \item
   Explanatory modeling
 \end{itemize}
+
+\hypertarget{etiske-problemer-ved-big-data}{%
+\subsection{Etiske problemer ved big
+data}\label{etiske-problemer-ved-big-data}}
 
 \bibliography{references.bib}
 

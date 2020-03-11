@@ -12,9 +12,11 @@ output:
     fig_caption: yes
     keep_tex: yes
     latex_engine: pdflatex
-  word_document: default
+    number_sections: true
+  word_document: 
+    number_sections: true
 biblio-style: apsr
-fontfamily: mathptmx
+fontfamily: cochineal
 fontsize: 12pt
 geometry: margin=1in
 bibliography: references.bib
@@ -33,7 +35,7 @@ Formålet med dette kapitel er at introducere til de datatyper og metoder, begre
 
 cites: @mullainathan2017machine, @varian2014big
 
-## Hvad er big data?
+# Hvad er big data?
 
 Big data has been credited with enabling an emerging field of computational social science with "the capacity to collect and analyze data with an unprecedented breadth and depth and scale" [@lazeretal]. Yet, the concept of big data lives two lives. On the one hand the popular definition is associated with exciting and futuristic promises of data-driven science and technology. On the other hand is what we might call the operational definition of how massive data sets are collected, stored, and used currently by social scientists. To unpack the role of big data in political science research, we first consider the second aspect of the concept and then circle back to examine what to believe about the first aspect.
 
@@ -49,7 +51,7 @@ The hurdle of accessing big data underscores a basic difference between it and t
 
 
 
-## Big data og forskningsdesign
+# Big data og forskningsdesign
 
 Systems that collect big data are purpose-built, and the purpose is never political science research. This holds true even for the most research-friendly data sources.
 
@@ -67,7 +69,7 @@ To cap it off, retsinformation.dk isn't finished evolving. It will continue to d
 
 
 
-## Behandling af big data
+# Behandling af big data
 
 - Pattern discovery (dimensionality reduction -- a la argument in Lowe 2013WP)
   - Generic data: Clustering, IRT, etc.
@@ -84,6 +86,9 @@ To cap it off, retsinformation.dk isn't finished evolving. It will continue to d
 - Classification / prediction
 
 - Explanatory modeling
+
+
+# Etiske problemer ved big data
 
 
 
