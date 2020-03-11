@@ -25,11 +25,11 @@ spacing: double
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-'Big data' er overalt. Det gælder i dobbelt forstand: takket være drastiske stigninger i computeres hukommelse og regnekraft indeholder næsten alle computere i dag store, ustrukturerede datamængder. Mange af disse data er biprodukter af menneskelig adfærd, som i dag registreres og kvantificeres i historisk uset omfang. Men 'big data' er også overalt i den forstand at begrebet 'big data' er blevet et almindeligt kendt og anvendt begreb. 
+'Big data' er overalt. Det gælder i dobbelt forstand: takket være drastiske stigninger i computeres hukommelse og regnekraft indeholder næsten alle computere i dag store, ustrukturerede datamængder. Mange af disse data er biprodukter af menneskelig adfærd, som i dag registreres og kvantificeres i historisk uset omfang. Men big data er også overalt i den forstand at begrebet 'big data' og beslægtede begreber er blevet almindeligt kendte og bredt anvendte, og ikke mindst genstand for stor kommerciel interesse. En hyppigt citeret artikel fra *Harvard Business Review* kaldte således "data scientist" for "det 21. århundredes mest sexede job" [@davenport2012data].
 
-Draft motivation:
+Alene den begrebslige udbredelse af big data gør det relevant at vide hvad det nærmere dækker over. Men big data er også reelt et væsentligt nybrud i forhold til de data og metoder, politologi og samfundsvidenskab traditionelt har betjent sig af. Big data muliggør analyser af politologiske emner som ville have været umulige med traditionelle metoder, men kræver også nye teknikker og metodiske værktøjer.
 
-Training, job market demands, sexy research, etc. increasingly value the ability to work with big data. It's not always clear what one means by big data or how one works with it, but there is a consensus that doing so requires skills. We agree, and we present some of these skills here, along with a description of what big data means and in what ways we work with it.
+Formålet med dette kapitel er at introducere til de datatyper og metoder, begrebet big data dækker over. Først opridser vi begrebets beytdning og historie. Dernæst diskuterer vi hvordan en række karakteristika ved big data skaber særlige udfordringer i forhold til at udvikle stærke forskningsdesigns. Herefter præsenterer vi en række specifikke tekniske værktøjer til behandling af big data. Afslutningsvis opridser vi nogle væsentlige etiske problematikker i relation til brugen af big data.
 
 cites: @mullainathan2017machine, @varian2014big
 
@@ -49,7 +49,7 @@ The hurdle of accessing big data underscores a basic difference between it and t
 
 
 
-## First skill of working w/big data: *Research Design*
+## Big data og forskningsdesign
 
 Systems that collect big data are purpose-built, and the purpose is never political science research. This holds true even for the most research-friendly data sources.
 
@@ -67,7 +67,7 @@ To cap it off, retsinformation.dk isn't finished evolving. It will continue to d
 
 
 
-## What to do with it:
+## Behandling af big data
 
 - Pattern discovery (dimensionality reduction -- a la argument in Lowe 2013WP)
   - Generic data: Clustering, IRT, etc.
