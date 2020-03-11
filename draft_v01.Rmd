@@ -3,7 +3,7 @@ title: "'Big data' og politologisk datavidenskab"
 author:
   - Frederik Hjorth
   - Matt W. Loftis
-subtitle: "Udkast, januar 2020"
+subtitle: "Udkast, april 2020"
 date:
   # "`r format(Sys.time(), '%B %d, %Y')`"
 output:
@@ -25,6 +25,7 @@ spacing: double
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+'Big data' er overalt. Det gælder i dobbelt forstand: takket være drastiske stigninger i computeres hukommelse og regnekraft indeholder næsten alle computere i dag store, ustrukturerede datamængder. Mange af disse data er biprodukter af menneskelig adfærd, som i dag registreres og kvantificeres i historisk uset omfang. Men 'big data' er også overalt i den forstand at begrebet 'big data' er blevet et almindeligt kendt og anvendt begreb. 
 
 Draft motivation:
 
@@ -32,7 +33,7 @@ Training, job market demands, sexy research, etc. increasingly value the ability
 
 cites: @mullainathan2017machine, @varian2014big
 
-## Hvad er big data? 
+## Hvad er big data?
 
 Big data has been credited with enabling an emerging field of computational social science with "the capacity to collect and analyze data with an unprecedented breadth and depth and scale" [@lazeretal]. Yet, the concept of big data lives two lives. On the one hand the popular definition is associated with exciting and futuristic promises of data-driven science and technology. On the other hand is what we might call the operational definition of how massive data sets are collected, stored, and used currently by social scientists. To unpack the role of big data in political science research, we first consider the second aspect of the concept and then circle back to examine what to believe about the first aspect.
 
