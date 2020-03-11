@@ -13,7 +13,7 @@ output:
     keep_tex: yes
     latex_engine: pdflatex
     number_sections: true
-  word_document: 
+  word_document:
     number_sections: true
 biblio-style: apsr
 fontfamily: cochineal
@@ -49,7 +49,7 @@ The hurdle of accessing big data underscores a basic difference between it and t
   - Classic advantages: Big / always on
   - Classic disadvantages: metered/restricted access + expertise barrier
 
-
+- Definition of machine learning: "y-hat vs. beta-hat"
 
 # Big data og forskningsdesign
 
@@ -71,9 +71,10 @@ To cap it off, retsinformation.dk isn't finished evolving. It will continue to d
 
 # Behandling af big data
 
+- Getting data: scraping, APIs, text databases
+
 - Pattern discovery (dimensionality reduction -- a la argument in Lowe 2013WP)
   - Generic data: Clustering, IRT, etc.
-  - Text: Topic modeling, text scaling, dictionaries
   - Fundamental unity of goals and approach
   - Variety in methods results from variation in:
     - Assumptions re: underlying model/geometry of latent space
@@ -82,6 +83,8 @@ To cap it off, retsinformation.dk isn't finished evolving. It will continue to d
     - Amount of domain expertise applied to structure results
     - Assumptions about what is correlated with what
     - Level of computational intensity
+
+- Text: Topic modeling, text scaling, dictionaries
 
 - Classification / prediction
 
