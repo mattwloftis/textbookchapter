@@ -1,3 +1,6 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[12pt,]{article}
 \usepackage[]{cochineal}
 \usepackage{amssymb,amsmath}
@@ -6,31 +9,32 @@
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
 \else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
+  \usepackage{unicode-math}
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage{microtype}
+\usepackage[]{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
 \usepackage{hyperref}
-\hypersetup{unicode=true,
+\hypersetup{
             pdftitle={`Big data' og politologisk datavidenskab},
             pdfauthor={Frederik Hjorth; Matt W. Loftis},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage{natbib}
-\bibliographystyle{apsr}
+\usepackage[margin=1in]{geometry}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -40,12 +44,6 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -60,32 +58,25 @@
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
 
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
+\makeatother
+\usepackage[]{natbib}
+\bibliographystyle{apsr}
 
-\setlength{\droptitle}{-2em}
-
-  \title{`Big data' og politologisk datavidenskab}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-  \subtitle{Udkast, april 2020}
-  \author{Frederik Hjorth \\ Matt W. Loftis}
-    \preauthor{\centering\large\emph}
-  \postauthor{\par}
-    \date{}
-    \predate{}\postdate{}
-  
+\title{`Big data' og politologisk datavidenskab}
+\providecommand{\subtitle}[1]{}
+\subtitle{Udkast, april 2020}
+\author{Frederik Hjorth \and Matt W. Loftis}
+\date{}
 
 \begin{document}
 \maketitle
@@ -110,7 +101,7 @@ metoder, men kræver også nye teknikker og metodiske værktøjer.
 
 Formålet med dette kapitel er at introducere til de datatyper og
 metoder, begrebet big data dækker over. Først opridser vi begrebets
-beytdning og historie. Dernæst diskuterer vi hvordan en række
+betydning og historie. Dernæst diskuterer vi hvordan en række
 karakteristika ved big data skaber særlige udfordringer i forhold til at
 udvikle stærke forskningsdesigns. Herefter præsenterer vi en række
 specifikke tekniske værktøjer til behandling af big data. Afslutningsvis
@@ -120,100 +111,120 @@ af big data.
 cites: \citet{mullainathan2017machine}, \citet{varian2014big}
 
 \hypertarget{hvad-er-big-data}{%
-\subsection{Hvad er big data?}\label{hvad-er-big-data}}
+\section{Hvad er big data?}\label{hvad-er-big-data}}
 
-Big data has been credited with enabling an emerging field of
-computational social science with ``the capacity to collect and analyze
-data with an unprecedented breadth and depth and scale''
-\citep{lazeretal}. Yet, the concept of big data lives two lives. On the
-one hand the popular definition is associated with exciting and
-futuristic promises of data-driven science and technology. On the other
-hand is what we might call the operational definition of how massive
-data sets are collected, stored, and used currently by social
-scientists. To unpack the role of big data in political science
-research, we first consider the second aspect of the concept and then
-circle back to examine what to believe about the first aspect.
+I en toneangivende artikel peger \citet{lazeretal} på big data som
+kilden til en ny type samfundsvidenskab, ``computational social
+science'', med ``kapacitet til at indsamle og analysere data med
+historisk uset bredde, dybde og omfang''. Men begrebet big data lever to
+liv. På den ene side er den populære definition af begrebet forbundet
+med futuristiske løfter om ny, datadrevet videnskab og teknologi. På den
+anden side står hvad man kunne kalde den operationelle definition af
+hvordan store datamænger indsamles, lagres og analyseres af
+samfundsvidenskabsfolk. For at belyse betydningen af big data for
+politologi betragter vi først denne anden, operationelle betydning af
+begrebet inden vi vender tilbage til den første, populære betydning.
 
-One widely familiar operational definition identifies big data with the
-so-called three Vs: Volume, Variety, and Velocity \citep{laney01}. Big
-data, here, refers to fast-evolving and very large data sets--including
-even data too large to store on a desktop computer--that contain lots of
-variation. Data sources of this nature are often interesting to social
-science: search engine logs, social media activity, government
-administrative records, mobile telephone records, or even data stored by
-passive monitoring conducted by digital devices in the physical world
-have been mobilized for social science research \citep{salganik17}.
-Accessing these data requires partnerships with their owners--phone
-companies, governments, technology companies, etc. This can mean writing
-software to access websites or remote databases or can involve more
-formalized partnerships to share information securely \citep{EL14}.
+En bredt anvendt operationel definition identificerer big data med de
+såkaldte `tre V'er': \emph{Volume}, \emph{Variety} og \emph{Velocity},
+dvs. volumen, variation og hastighed \citep{laney01}. Big data refererer
+her til foranderlige og meget store datasæt -- inklusive data der er for
+store til at gemme på en almindelig pc -- der indeholder masser af
+variation. Datakilder af denne art er ofte interessante for
+samfundsvidenskab: søgemaskinelogfiler, sociale medieaktiviteter,
+offentlige registre, mobiltelefonregistre eller endda data gemt ved
+passiv overvågning udført af digitale enheder i den fysiske verden er
+alle blevet anvendt til samfundsvidenskabelig forskning
+\citep{salganik17}. Adgang til disse data kræver partnerskaber med deres
+ejere -- telefonfirmaer, regeringer, teknologiselskaber osv. Dette kan
+betyde, at man skriver software til at få adgang til websteder eller
+eksterne databaser eller kan involvere mere formaliserede partnerskaber
+for at dele information sikkert \citep{EL14}. I afsnittet om
+``Anskaffelse af data'' nedenfor beskriver vi nærmere hvordan det kan
+finde sted.
 
-The hurdle of accessing big data underscores a basic difference between
-it and traditional social science data: traditional social science data
-were collected for the purpose of doing social science. Social
-scientists must always consider the sources and the nature of our data,
-and big data has sometimes been referred to as ``found data'' or
-``digital exhaust'' \citep{harford14}. What does this mean? Virtually
-all big data are purpose-built for goals \emph{other than} social
-research. Metadata like timestamps, follower counts, or activity
-frequencies on social media web sites are not stored for science or,
-necessarily, according to scientific standards. Although they may be
-useful, their scientific value is an unintended byproduct (i.e.~exhaust)
-of business or government activity. As such, when applying big data to
-social science research we must always probe the implications of the
+This highlights an important difference between big data and traditional
+social science data: traditional social science data were collected for
+the purpose of social science. Big data, by contrast, is sometimes
+referred to as ``found data'' or ``digital exhaust'' \citep{harford14}.
+What does this mean? Virtually all big data are purpose-built for goals
+\emph{other than} social research. Metadata like timestamps, follower
+counts, or activity frequencies on social media web sites are not stored
+for science or, necessarily, according to scientific standards.
+
+Even government data sources present this problem, sometimes in
+confusing ways. Consider a minor example: lov nr 1049 af 11/12/1996. The
+law is short, fewer than 20 words. The only thing it does is ophæve lov
+om skoleskibsafgift. Civilstyrelsens database of all Danish law,
+\emph{retsinformation.dk}, lists several pieces of metadata about lov nr
+1049.\footnote{See:
+  \url{https://www.retsinformation.dk/Forms/R0710.aspx?id=83509}} For
+example, the metadata capture the law it repeals, several related
+documents, its publication date, and ministerområdet. This last one is
+confusing, however. Ministerområdet for lov nr 1049 is currently listed
+as Uddannelses- og Forskningsministeriet. However, the law was signed by
+Mimi Jakobsen. If you do some further research, you will find that Mimi
+Jakobsen var Erhvervsminister i Regeringen Poul Nyrup Rasmussen
+II.\footnote{\url{https://www.regeringen.dk/regeringer-siden-1848/regeringen-poul-nyrup-rasmussen-ii/}}
+Why, then, is this law not connected to Erhvervsministeriet? This
+confusion is caused because Civilstyrelsen opdaterer ministerområder
+løbende based on \emph{today's} legal framework and ministries.
+Connecting lov nr 1049 to Uddannelses- og Forskningsministeriet is
+obviously wrong if you want to build a historical data set of Danish
+law. Unfortunately for political scientists, it is correct if---like
+Civilstyrelsen---your goal is not historical research, but instead to
+organize the legislation currently in force in Denmark. To make matters
+worse for researchers, retsinformation.dk will continue to evolve in
+ways that may or may not benefit political science research, depending
+on Civilstyrelsens future needs and goals.
+
+When using big data built for some official or private purpose, problems
+of this nature are always lurking. Although big data can be extremely
+useful for social science, their scientific value is an \emph{unintended
+byproduct} (i.e.~exhaust) of business or government activity. When
+applying big data to social science research we must always understand
+why and how the data were assembled and probe the implications of the
 data's purpose for our scientific applications.\footnote{As
   \citet{salganik17} puts it, the challenges and opportunities created
   by big data follow from asking why the data were collected.}
 
-\begin{itemize}
-\tightlist
-\item
-  How/why big data became what it is in the zeitgeist
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Classic advantages: Big / always on
-  \item
-    Classic disadvantages: metered/restricted access + expertise barrier
-  \end{itemize}
-\end{itemize}
-
 \hypertarget{big-data-og-forskningsdesign}{%
-\subsection{Big data og
+\section{Big data og
 forskningsdesign}\label{big-data-og-forskningsdesign}}
 
-Systems that collect big data are purpose-built, and the purpose is
-never political science research. This holds true even for the most
-research-friendly data sources.
+Big data in political science research designs: - addressing confounding
+- it's dirty (re: Salganik) -- human behavior is mixed together with
+actions taken by bots/automated systems - drifting -- Needs of
+\emph{actual} system maintainers / users may be completely orthogonal to
+needs of political science research (or even opposed, consider FB) -
+algorithmically confounded -- large-scale systems have robot nannies.
+These include everything from spell checkers to YouTube's recommendation
+algorithm. The observed behavior we find in big data is a consequence of
+the (generally) unobservable interaction between humans and these
+algorithms. - Standard sampling issues (nonrepresentative, systematic
+sampling bias) - its role - uncommon to directly analyze - more often:
+measurement
+
+\hypertarget{behandling-af-big-data}{%
+\section{Behandling af big data}\label{behandling-af-big-data}}
+
+\hypertarget{anskaffelse-af-data}{%
+\subsection{Anskaffelse af data}\label{anskaffelse-af-data}}
 
 \begin{itemize}
 \tightlist
 \item
-  Big data typically \emph{not designed for research}, i.e.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    it's dirty (re: Salganik) -- human behavior is mixed together with
-    actions taken by bots/automated systems
-  \item
-    drifting -- Needs of \emph{actual} system maintainers / users may be
-    completely orthogonal to needs of political science research (or
-    even opposed, consider FB)
-  \item
-    algorithmically confounded -- large-scale systems have robot
-    nannies. These include everything from spell checkers to YouTube's
-    recommendation algorithm. The observed behavior we find in big data
-    is a consequence of the (generally) unobservable interaction between
-    humans and these algorithms.
-  \end{itemize}
-\item
-  Standard sampling issues (nonrepresentative, systematic sampling bias)
+  Getting data: scraping, APIs, text databases
 \end{itemize}
 
-\hypertarget{behandling-af-big-data}{%
-\subsection{Behandling af big data}\label{behandling-af-big-data}}
+\hypertarget{usuperviserede-tilgange}{%
+\subsection{Usuperviserede tilgange}\label{usuperviserede-tilgange}}
+
+\hypertarget{superviserede-tilgange}{%
+\subsection{Superviserede tilgange}\label{superviserede-tilgange}}
+
+\hypertarget{tekst-som-data}{%
+\subsection{Tekst som data}\label{tekst-som-data}}
 
 \begin{itemize}
 \item
@@ -224,8 +235,6 @@ research-friendly data sources.
   \tightlist
   \item
     Generic data: Clustering, IRT, etc.
-  \item
-    Text: Topic modeling, text scaling, dictionaries
   \item
     Fundamental unity of goals and approach
   \item
@@ -248,16 +257,24 @@ research-friendly data sources.
     \end{itemize}
   \end{itemize}
 \item
+  Text: Topic modeling, text scaling, dictionaries
+\item
   Classification / prediction
 \item
   Explanatory modeling
 \end{itemize}
 
 \hypertarget{etiske-problemer-ved-big-data}{%
-\subsection{Etiske problemer ved big
+\section{Etiske problemer ved big
 data}\label{etiske-problemer-ved-big-data}}
 
-\bibliography{references.bib}
+emotional contagion example: \citet{kramer2014experimental}
 
+problem: lack of informed consent
+
+complication: under surveillance capitalism, all citizens are subject to
+constant experimentation w/o consent
+
+\bibliography{references.bib}
 
 \end{document}
