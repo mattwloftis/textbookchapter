@@ -137,20 +137,21 @@ passiv overvågning udført af digitale enheder i den fysiske verden er
 alle blevet anvendt til samfundsvidenskabelig forskning
 \citep{salganik17}. Adgang til disse data kræver partnerskaber med deres
 ejere -- telefonfirmaer, regeringer, teknologiselskaber osv. Dette kan
-betyde, at man skriver software til at få adgang til websteder eller
+indebære at man skriver software til at få adgang til websteder eller
 eksterne databaser eller kan involvere mere formaliserede partnerskaber
 for at dele information sikkert \citep{EL14}. I afsnittet om
 ``Anskaffelse af data'' nedenfor beskriver vi nærmere hvordan det kan
 finde sted.
 
-This highlights an important difference between big data and traditional
-social science data: traditional social science data were collected for
-the purpose of social science. Big data, by contrast, is sometimes
-referred to as ``found data'' or ``digital exhaust'' \citep{harford14}.
-What does this mean? Virtually all big data are purpose-built for goals
-\emph{other than} social research. Metadata like timestamps, follower
-counts, or activity frequencies on social media web sites are not stored
-for science or, necessarily, according to scientific standards.
+Dette peger også på en vigtig forskel mellem big data og traditionelle
+samfundsvidenskabelige data: traditionelle samfundsvidenskabelige data
+er typisk indsamlet med samfundsvidenskab som formål. I modsætning
+hertil omtales big data til tider som ``fundne data'' eller ``digital
+udstødning'' \citep{harford14}. Hvad betyder det? Næsten alle big data
+er udviklet til \emph{andre formål} end samfundsforskning. Metadata
+såsom tidsmarkører, antal følgere, eller aktivitetsmål på sociale medier
+lagres ikke for videnskabens skyld - eller nødvendigvis i
+overensstemmelse med videnskabelige standarder.
 
 Even government data sources present this problem, sometimes in
 confusing ways. Consider a minor example: lov nr 1049 af 11/12/1996. The
@@ -187,6 +188,44 @@ why and how the data were assembled and probe the implications of the
 data's purpose for our scientific applications.\footnote{As
   \citet{salganik17} puts it, the challenges and opportunities created
   by big data follow from asking why the data were collected.}
+
+\hypertarget{kilder-til-big-data}{%
+\section{Kilder til big data}\label{kilder-til-big-data}}
+
+Det er ofte en møjsommelig proces at indsamle samfundsvidenskabelige
+data. Derfor fremhæves det ofte som en fordel ved big data at
+undersøgelsens subjekter selv genererer data: en forsker kan eksempelvis
+indsamle millioner af tweets om et politisk emne uden skulle uddele et
+eneste spørgeskema. Men selv om data er genereret på forhånd er det ikke
+ligetil at \emph{anskaffe} sig data. Der er groft sagt tre måder man kan
+gøre det på.
+
+Den første og mest umiddelbare måde er at udtrække data direkte fra
+websider, typisk kaldet \emph{scraping}. Scraping udnytter at indholdet
+på de fleste større websider kommer fra databaser som fremstiller
+indholdet i websider med en konsistent struktur. Ved at hente kildekoden
+til disse websider, på samme måde som en webbrowser gør det, kan man
+udtrække data på en konsistent måde. Hvis man f.eks. besøger websiden
+for \emph{Lov om ophævelse af lov om skoleskibsafgift} hos
+Retsinformation finder man i sidens kildekode bl.a. dette:
+
+\begin{verbatim}
+<div class="metadata-summary">
+            <span class="kortNavn">LOV nr 1049 af 11/12/1996 Gældende</span><br>
+      <div class="ressort">
+                Offentliggørelsesdato: 12-12-1996<br>
+        Uddannelses- og Forskningsministeriet
+            </div>
+        </div>
+\end{verbatim}
+
+Kodestumpen viser at Retsinformations database lagrer lovens navn i
+feltet \texttt{kortNavn} og lovens offentliggørelsesdato og
+ressortområde i feltet \texttt{ressort}. Takket være den stringente
+kodestruktur er det nemt at gemme disse og andre metadata i et
+analyserbart format. Og fordi kodestrukturen er ens på tværs af love hos
+Retsinformation kan man scrape data om tusindvis af andre love efter
+samme princip.
 
 \hypertarget{big-data-og-forskningsdesign}{%
 \section{Big data og
