@@ -51,6 +51,22 @@ When using big data built for some official or private purpose, problems of this
 
 # Kilder til big data
 
+Det er ofte en møjsommelig proces at indsamle samfundsvidenskabelige data. Derfor fremhæves det ofte som en fordel ved big data at undersøgelsens subjekter selv genererer data: en forsker kan eksempelvis indsamle millioner af tweets om et politisk emne uden skulle uddele et eneste spørgeskema. Men selv om data er genereret på forhånd er det ikke ligetil at *anskaffe* sig data. Der er groft sagt tre måder man kan gøre det på.
+
+Den første og mest umiddelbare måde er at udtrække data direkte fra websider, typisk kaldet *scraping*. Scraping udnytter at indholdet på de fleste større websider kommer fra databaser som fremstiller indholdet i websider med en konsistent struktur. Ved at hente kildekoden til disse websider, på samme måde som en webbrowser gør det, kan man udtrække data på en konsistent måde. Hvis man f.eks. besøger websiden for *Lov om ophævelse af lov om skoleskibsafgift*  hos Retsinformation finder man i sidens kildekode bl.a. dette:
+
+```
+<div class="metadata-summary">
+			<span class="kortNavn">LOV nr 1049 af 11/12/1996 Gældende</span><br>
+      <div class="ressort">
+				Offentliggørelsesdato: 12-12-1996<br>
+        Uddannelses- og Forskningsministeriet
+			</div>
+		</div>
+```
+
+Kodestumpen viser at Retsinformations database lagrer lovens navn i feltet `kortNavn` og lovens offentliggørelsesdato og ressortområde i feltet `ressort`. Takket være den stringente kodestruktur er det nemt at gemme disse og andre metadata i et analyserbart format. Og fordi kodestrukturen er ens på tværs af love hos Retsinformation kan man scrape data om tusindvis af andre love efter samme princip.
+
 
 
 # Big data og forskningsdesign
