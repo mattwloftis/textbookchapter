@@ -71,7 +71,9 @@ Når man indsamler data ved hjælp af scraping tilgår man i princippet data på
 
 Kodestumpen om *Lov om ophævelse af lov om skoleskibsafgift* kommer fra Retsinformation, og det er som hovedregel ikke forbudt at scrape data fra offentlige hjemmesider, så længe man ikke urimeligt belaster udbyderens servere. Man bør dog uanset kilden altid sikre sig tilsagn fra dataudbyderen før man iværksætter et scraping-projekt.
 
+APIs
 
+direct access to databases
 
 # Big data og forskningsdesign
 
