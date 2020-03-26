@@ -233,7 +233,7 @@ datamængder er det også en kontroversiel praksis. Et illustrativt
 eksempel på det kommer fra en meget omtalt juridisk strid mellem det
 sociale netværk LinkedIn og analysefirmaet HiQ. En del af HiQ's
 forretningsmodel er at analysere arbejdsmarkedet for it-specialister, og
-HiQ har bl.a. høstet data ved at scrape offentlige profiler fra
+HiQ har bl.a. høstet data ved at scrape data fra offentlige profiler på
 LinkedIn. I 2017 sagsøgte LinkedIn HiQ med påstand om at HiQ's
 scraping-praksis var et brud på amerikansk it-lovgivning. HiQ fik til
 sidst medhold i at virksomheden kunne scrape data fra offentlige
@@ -279,22 +279,103 @@ eksperimentet involverede i alt 61 millioner Facebook-brugere.
 Studiet af Bond m.fl. er exceptionelt fordi det kombinerer kvaliteterne
 ved big data og eksperimentel metode. Mange forskere gør derfor også en
 stor indsats for at etablere samarbejder med virksomheder og
-organisationer der kan give dem adgang til data der ellers ville være
+organisationer der kan give dem adgang til data, der ellers ville være
 utilgængelige. Men samarbejde med virksomheder om big data er ikke uden
 faldgruber. For det første kræver det ofte et betydeligt bureaukratisk
 benarbejde at etablere et samarbejde. For det andet, og mere principielt
 problematisk, er virksomheder og organisationer sjældent interesserede i
 forskning der stiller dem selv i et dårligt lys. Det kan betyde at nogle
-typer undersøgelser prioriteres på bekostningen af andre alene fordi de
-passer til store teknologivirksomheders dagsordener. Eksempelvis
+typer undersøgelser prioriteres på bekostning af andre, alene fordi de
+passer bedre til store teknologivirksomheders dagsordener. Eksempelvis
 konkluderede \citet{bond2012} at Facebook-kampagnen havde en gunstig
-effekt på valgdeltagelse. Men det er uklart om forskerne havde haft
-samme frihedsgrader til at studere de negative konsekvenser af at bruge
+effekt på valgdeltagelse. Det er i sagens natur en flatterende
+konklusion for Facebook. Men det er uklart om forskerne havde haft samme
+frihedsgrader til at studere de negative konsekvenser af at bruge
 Facebook.
 
 \hypertarget{big-data-og-forskningsdesign}{%
 \section{Big data og
 forskningsdesign}\label{big-data-og-forskningsdesign}}
+
+Big data has applications in political science in empirical studies of
+all types, from description to explanation, prediction, and causal
+studies. Although these applications are only beginning across the
+social sciences, the past 15 years have provided enough experience that
+we can already point to one strong finding that can always guide us when
+we apply big data in our work: research design still matters
+\citetext{\citealp[see][p.~13]{toshkov16}; \citealp{CG15}}.
+
+\emph{Familiar sampling bias}
+
+Perhaps the most heady idea about big data was expressed best in the,
+now infamous, article in \emph{Wired} magazine by Chris
+\citet{anderson08} -- the idea that big data eliminates sampling
+problems because \emph{n}=all. That is, one can analyze all of the data.
+The article has met with a good deal of attention and pushback in the
+years since it was published. In early 2020, it boasts more than 2.000
+citations on Google Scholar. To put that in perspective, Maurice
+Duverger's book \emph{Political Parties}, the origin of political
+science's only finding that rises to the level of a law, was published
+in 1959 and counts just over 7.000 citations.
+
+The concept of ``\emph{n}-all'' implies that big data can be taken at
+face value. Its patterns reveal a complete picture of human behavior.
+Unfortunately, the selection problem is still with us. It arises
+whenever observations enter your data for systematic reasons.
+\citet{AP08} illustrate the problem with an example from the National
+Health Interview Survey in the US, in which individuals are asked to
+rate their health on a scale. Perhaps surprisingly, they find that
+individuals in hospitals systematically rate their health as worse than
+those out of hospital. Is the obvious conclusion that hospitals make
+people sicker? Of course not, individuals in hospital \emph{selected}
+into being in the hospital because they were sicker.
+
+Similar situations often arise with big data. For example,
+\citet{harford14} recounts the story of Boston's experiment with using
+cell phone tracking to identify pot holes in the streets that need
+repair. The result was that the city discovered every pothole in
+neighborhoods frequented by young, affluent drivers--they type of person
+who owned a smart phone and downloaded the city's app. Likewise,
+\citet{TSSW10} confirm the finding in previous research that Twitter
+mentions of German parties correlated strongly with their vote share in
+the 2009 parliamentary elections, with one major exception. The
+extremely online \emph{Pirate Party} garned a huge number of mentions on
+Twitter, while receiving a tiny fraction of the actual vote. In both of
+these cases, if \emph{n}=all then it equals ``all'' of a specific,
+self-selected group of technology users.
+
+Ignoring sampling bias has always meant that researchers risked finding
+the wrong answer. Using big data with biased samples simply means now we
+get extremely precise estimates of the wrong answer.
+
+\emph{Special headaches for big data}
+
+Big data also confronts us with new sources of bias and confounding.
+Perhaps the most famous example for social scientists is that of Google
+Flu Trends (GFT). GFT was a Google project launched in 2008 that
+predicted regional flu epidemics from fine-grained data on users queries
+to Google about their symptoms \citep{Getal2009}. After initially
+receiving attention for its impressive accuracy, GFT's predictive
+performance began to diminish systematically over time until--by the
+time the project was shuttered in 2015--for years it had produced
+inaccurately high estimates sometimes as great as double the data
+reported by US Centers for Disease Control and Prevention
+\citep{harford14}. The reasons for GFT's collapse are instructive for
+understanding both why research design still matters and what new
+headaches come with big data.
+
+Several things contributed to GFT's problems, but the most noteworth
+seems to have arises after Google adjusted its main search service
+\citep[see][]{LKKV14}. Google, like many organizations that produce and
+process big data, is constantly updating its service. In 2011 and 2012,
+Google added functions that suggested additional search terms to users
+(based on their initial search terms) and even suggested possible
+diagnoses for search terms that involved symptoms. The upshot was a
+feedback loop: users of Google search were nudged to refine their
+searches for symptoms and to seek out information on the flu,
+intensifying the signals that GFT relied on to predict flu outbreaks.
+There is more to GFT's story, of course, but this highlights some
+important principles for researchers to keep in mind.
 
 Big data in political science research designs: - addressing confounding
 - it's dirty (re: Salganik) -- human behavior is mixed together with
@@ -305,68 +386,40 @@ algorithmically confounded -- large-scale systems have robot nannies.
 These include everything from spell checkers to YouTube's recommendation
 algorithm. The observed behavior we find in big data is a consequence of
 the (generally) unobservable interaction between humans and these
-algorithms. - Standard sampling issues (nonrepresentative, systematic
-sampling bias) - its role - uncommon to directly analyze - more often:
-measurement
+algorithms.
 
-\hypertarget{behandling-af-big-data}{%
-\section{Behandling af big data}\label{behandling-af-big-data}}
-
-\hypertarget{anskaffelse-af-data}{%
-\subsection{Anskaffelse af data}\label{anskaffelse-af-data}}
+\hypertarget{measurement-stuff}{%
+\subsection{measurement stuff}\label{measurement-stuff}}
 
 \begin{itemize}
 \tightlist
 \item
-  Getting data: scraping, APIs, text databases
-\end{itemize}
-
-\hypertarget{usuperviserede-tilgange}{%
-\subsection{Usuperviserede tilgange}\label{usuperviserede-tilgange}}
-
-\hypertarget{superviserede-tilgange}{%
-\subsection{Superviserede tilgange}\label{superviserede-tilgange}}
-
-\hypertarget{tekst-som-data}{%
-\subsection{Tekst som data}\label{tekst-som-data}}
-
-\begin{itemize}
-\item
-  Pattern discovery (dimensionality reduction -- a la argument in Lowe
-  2013WP)
+  role of big data in the research design
 
   \begin{itemize}
   \tightlist
   \item
-    Generic data: Clustering, IRT, etc.
+    uncommon to directly analyze
   \item
-    Fundamental unity of goals and approach
-  \item
-    Variety in methods results from variation in:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Assumptions re: underlying model/geometry of latent space
-    \item
-      Related to above: something like, ``format'' of output
-    \item
-      Structure/nature of input data
-    \item
-      Amount of domain expertise applied to structure results
-    \item
-      Assumptions about what is correlated with what
-    \item
-      Level of computational intensity
-    \end{itemize}
+    more often: measurement
   \end{itemize}
-\item
-  Text: Topic modeling, text scaling, dictionaries
-\item
-  Classification / prediction
-\item
-  Explanatory modeling
 \end{itemize}
+
+\hypertarget{behandling-af-big-data}{%
+\section{Behandling af big data}\label{behandling-af-big-data}}
+
+Big data præsenterer både computationelle og analytiske udfordringer -
+vi fokuserer på analytiske
+
+Fællestræk: højdimensionalitet
+
+Fælles for metoder: dimensionalitetsreduktion
+
+Klassifikation ctr. skalering
+
+usuperviserede tilgange
+
+superviserede tilgange
 
 \hypertarget{etiske-problemer-ved-big-data}{%
 \section{Etiske problemer ved big
