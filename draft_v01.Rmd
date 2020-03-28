@@ -100,7 +100,7 @@ Big data confronts us with new sources of bias and confounding. Perhaps the most
 
 Several things contributed to GFT's problems, but the most noteworthy seems to have arisen after Google adjusted its main search service [see @LKKV14]. Like any organization that produces or processes big data, Google changes its service or its algorithms from time to time. In 2011 and 2012, Google added functions to its search service that suggested additional search terms to users, based on their original search terms. It even suggested possible diagnoses for search terms that involved disease symptoms. The upshot was an apparent feedback loop: users of Google search were nudged to refine their searches for symptoms and to seek out information on the flu, intensifying the signals that GFT relied on to predict flu outbreaks. There is more to GFT's story, of course, but this part of it points out some special features of big data researchers must consider to avoid sampling bias. As @salganik17 puts it, big data is *algorithmically confounded*, *dirty*, and *drifting*.
 
-Algorithmic confounding happens when computer behavior interacts with human behavior in a system, altering the human behavior we want to study. GFT is an example, since computer behavior--the Google search algorithm's recommendations--interacted with the human behavior that GFT relied on to predict flu outbreaks (searches for flu symptoms). Google's search suggestions altered users' perceptions of their symptoms and led them to different search behavior. 
+Algorithmic confounding happens when computer behavior interacts with human behavior in a system, altering the human behavior we want to study. GFT is an example, since computer behavior--the Google search algorithm's recommendations--interacted with the human behavior that GFT relied on to predict flu outbreaks (searches for flu symptoms). Google's search suggestions altered users' perceptions of their symptoms and led them to different search behavior.
 
 By "dirty," @salganik17 means that big data also contains false positives in the form of computer behavior that is mistaken for human behavior. For example, at least a portion of Google's additional search traffic around flu syptoms may have been purely accidental, caused only by the search engine's suggestions. Smart phone users will recognize this problem as an autocorrect fail. An example that occassionaly makes headlines would be the presence of large numbers of "bots" on social media platforms. Bots are accounts that are not operated by human users, but rather are simply software programs executing automated behaviors in the form of liking, following, or commenting. Despite Twitter and other platforms' occasional purges of bot accounts, an unspecified and probably high number of bots persist. Any analysis of social media data must think carefully about how to clean the data to eliminate as much bot behavior as possible.
 
@@ -129,7 +129,7 @@ This raises a point worth emphasizing about big data methods in political scienc
 
 
 
-    
+
 ## measurement stuff
 
 <!-- here we transition to the discussion of units of analysis and jusifying the focus on measurement -->
@@ -142,7 +142,9 @@ This raises a point worth emphasizing about big data methods in political scienc
 
 # Behandling af big data
 
-Big data præsenterer både computationelle og analytiske udfordringer - vi fokuserer på analytiske
+Der er groft sagt to typer udfordringer der gør sig særligt gældende når man arbejder med big data. Der er for det første en mænge *computationelle* udfordringer, dvs. rent tekniske udfordringer med at bearbejde datamængder der er væsentligt større end hvad en almindelig computer typisk skal håndtere. Computationelle udfordringer er hyppige i arbejde med big data. Faktisk afgrænser den oprindelige definition i @laney01 netop big data til datamængder der overskrider en almindelig desktop-computers kapacitet. Det er også i praksis en relevant udfordring. Den første frigivelse af data fra Facebooks forskningssamarbejde *Social Science One* bygger eksempelvis på en omtrent en exabyte data, svarende til en milliard gigabytes. Vi dækker ikke håndteringen af computationelle udfordringer nærmere her, men henviser til @varian2014big, som bl.a. giver en tilgængelig indføring i forskelle tekniske metoder til håndtering af kolossale datamængder.
+
+Vi fokuserer her i stedet på særlige *analytiske* udfordringer når man arbejder med big data.
 
 Fællestræk: højdimensionalitet
 
