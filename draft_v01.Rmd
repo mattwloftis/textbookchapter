@@ -33,8 +33,6 @@ Alene den begrebslige udbredelse af big data gør det relevant at vide hvad det 
 
 Formålet med dette kapitel er at introducere til de datatyper og metoder, begrebet big data dækker over. Først opridser vi begrebets betydning og historie. Dernæst diskuterer vi hvordan en række karakteristika ved big data skaber særlige udfordringer i forhold til at udvikle stærke forskningsdesigns. Herefter præsenterer vi en række specifikke tekniske værktøjer til behandling af big data. Afslutningsvis opridser vi nogle væsentlige etiske problematikker i relation til brugen af big data.
 
-cites: @mullainathan2017machine, @varian2014big
-
 # Hvad er big data?
 
 I en toneangivende artikel peger @lazeretal på big data som kilden til en ny type samfundsvidenskab, "computational social science", med "kapacitet til at indsamle og analysere data med historisk uset bredde, dybde og omfang". Men begrebet big data lever to liv. På den ene side er den populære definition af begrebet forbundet med futuristiske løfter om ny, datadrevet videnskab og teknologi. På den anden side står hvad man kunne kalde den operationelle definition af hvordan store datamænger indsamles, lagres og analyseres af samfundsvidenskabsfolk. For at belyse betydningen af big data for politologi betragter vi først denne anden, operationelle betydning af begrebet inden vi vender tilbage til den første, populære betydning.
