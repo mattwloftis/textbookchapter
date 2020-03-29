@@ -51,6 +51,8 @@ Når man analyserer big data der er produceret til et eksisterende privat eller 
 
 Det er ofte en møjsommelig proces at indsamle samfundsvidenskabelige data. Derfor fremhæves det ofte som en fordel ved big data at undersøgelsens subjekter selv genererer data: en forsker kan eksempelvis indsamle millioner af tweets om et politisk emne uden skulle uddele et eneste spørgeskema. Men selv om data er genereret på forhånd er det ikke ligetil at *anskaffe* sig data. Der er groft sagt tre måder man kan gøre det på.
 
+## Scraping
+
 Den første og mest umiddelbare måde er at udtrække data direkte fra websider, typisk kaldet *scraping*. Scraping udnytter at indholdet på de fleste større websider kommer fra databaser som fremstiller indholdet i websider med en konsistent struktur. Ved at hente kildekoden til disse websider, på samme måde som en webbrowser gør det, kan man udtrække data på en konsistent måde. Hvis man f.eks. besøger websiden for *Lov om ophævelse af lov om skoleskibsafgift*  hos Retsinformation finder man i sidens kildekode bl.a. dette:
 
 ```
@@ -69,9 +71,13 @@ Når man indsamler data ved hjælp af scraping tilgår man i princippet data på
 
 Kodestumpen om *Lov om ophævelse af lov om skoleskibsafgift* i eksemplet ovenfor kommer fra Retsinformation, og det er som hovedregel ikke forbudt at scrape data fra offentlige hjemmesider, så længe man ikke urimeligt belaster udbyderens servere. Man bør dog uanset kilden altid sikre sig tilsagn fra dataudbyderen før man går i gang med at scrape data.
 
+## API'er
+
 En anden måde at hente data på er gennem såkaldte API'er. API står for *Application Programming Interface* og er en slags kontrolleret adgang til data hos en dataudbyder. API'er indebærer altså ikke samme juridiske usikkerheder som scraping, da udbyderen selv stiller data til rådighed og definerer rammerne herfor. Eksempelvis har mange API'er *rate limits* der sætter grænser for hvor meget data man kan hente ad gangen.
 
 Princippet om at big data ikke er lavet for samfundsforskningens skyld gælder også for API'er. Det egentlige formål for de fleste API'er er at dele data på tværs af kommercielle platforme. For eksempel er det API'er der muliggør at et online-medie kan vise hvilke af ens egne Facebook-venner der har 'liket' en specifik artikel, fordi avisen kan tilgå data om læserens Facebook-netværk gennem Facebooks API. Men mange sociale netværk stiller meget righoldige data til rådighed for forskere gennem API'er. For eksempel bruger @hjorth2019, som studerer fordelingen af online misinformation, Twitters API til at indsamle data om ca. 13 millioner følgere af ca. 10.000 Twitter-konti. Offentlige myndigheder stiller også i stigende grad data til rådighed gennem API'er. Eksempelvis stiller Folketinget data om medlemmer, forhandlinger og lovarbejde til rådighed gennem en API.
+
+## Datasamarbejder
 
 En tredje måde at få adgang til big data er gennem et egentligt samarbejde med virksomheder der lagrer big data. For eksempel rapporterer @bond2012 om et eksperiment, hvor samfundsforskere i samarbejde med Facebook randomiserede hvilken type information Facebook-brugere fik om deres venners stemmeadfærd. I kraft af samarbejdet kunne forskerne udføre eksperimentet i en uhørt stor skala: eksperimentet involverede i alt 61 millioner Facebook-brugere.
 
@@ -146,15 +152,17 @@ Der er groft sagt to typer udfordringer der gør sig særligt gældende når man
 
 Vi fokuserer her i stedet på særlige analytiske udfordringer der opstår når man arbejder med big data. Selv hvis vi ser bort fra den rent tekniske håndtering af data er der stadig særpræg ved big data som ofte gør gængse samfundsvidenskabelige metoder utilstrækkelige. Antag for eksempel at vi interesserer os for danske statsministres retorik med afsæt i et datasæt med statsministres nytårstaler mellem 1985 og 2020. Med bare 36 taler er datasættet egentlig ret småt, men ustrukturerede tekstdata af denne type er typiske i big data-analyser, og selv dette lille eksempel illustrerer de særlige analytiske udfordringer ved big data.
 
-Vi kunne for eksempel spørge os selv hvilke ord socialdemokratiske statsministre bruger særligt hyppigt sammenlignet med borgerlige statsministre. En gængs samfundsvidenskabelig tilgang til sådan et problem ville være at estimere en regressionsmodel med statsministerens partitilhørsforhold som afhængig variabel og uafhængige variable der angiver hvert enkelt ords hyppighed i den enkelte tale. Men det kan ikke lade sig gøre. En almindelig regressionsmodel kan som bekendt kun estimeres hvis antallet af observationer overstiger antallet af uafhængige variable i modellen, og det er ikke tilfældet her. Faktisk har danske statsministre brugt 7.286 forskellige ord i de 36 taler, dvs. godt og vel 200 gange så mange variable som observationer. Vi har med andre ord at gøre med ekstremt *højdimensionelle* data. Fordi al informationen i data er spredt ud over et stort antal variable er informationsværdien i hver enkelt variabel paradoksalt nok meget lille. Højdimensionalitet er et meget hyppigt problem i big data, og derfor er *dimensionalitetsreduktion* et centralt analytisk mål i næsten alle big data-metoder.
+## Dimensionalitetsreduktion
 
+Vi kunne for eksempel spørge os selv hvilke ord socialdemokratiske statsministre bruger særligt hyppigt sammenlignet med borgerlige statsministre. En gængs samfundsvidenskabelig tilgang til sådan et problem ville være at estimere en regressionsmodel med statsministerens partitilhørsforhold som afhængig variabel og uafhængige variable der angiver hvert enkelt ords hyppighed i den enkelte tale. Men det kan ikke lade sig gøre. En almindelig regressionsmodel kan kun estimeres hvis antallet af observationer overstiger antallet af uafhængige variable i modellen, og det er ikke tilfældet her. Faktisk har danske statsministre brugt 7.286 forskellige ord i de 36 taler. Datasættet har altså godt og vel 200 gange så mange variable som der er observationer. Vi har med andre ord at gøre med ekstremt *højdimensionelle* data. Fordi al informationen i data er spredt ud over et stort antal variable er informationsværdien i hver enkelt variabel paradoksalt nok meget lille. Højdimensionalitet opstår ikke alene i arbejdet med tekstdata, men også med data om sociale netværk eller billeder. Derfor er *dimensionalitetsreduktion* et centralt analytisk mål i næsten alle big data-metoder. Dimensionalitetsreduktion indebærer at man reducerer antallet af variable, som i big data-terminologi ofte kaldes *features*, til et lille antal som indeholder mest muligt af informationen fra den oprindelige, fulde mængde af variable.
 
+## Klassifikation og skalering
 
-Klassifikation ctr. skalering
+TODO
 
-usuperviserede tilgange
+## Superviserede og usuperviserede tilgange
 
-superviserede tilgange
+TODO
 
 <!-- - Pattern discovery (dimensionality reduction -- a la argument in Lowe 2013WP)
   - Generic data: Clustering, IRT, etc.
