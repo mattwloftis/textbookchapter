@@ -152,6 +152,8 @@ Der er groft sagt to typer udfordringer der gør sig særligt gældende når man
 
 Vi fokuserer her i stedet på særlige analytiske udfordringer der opstår når man arbejder med big data. Selv hvis vi ser bort fra den rent tekniske håndtering af data er der stadig særpræg ved big data som ofte gør gængse samfundsvidenskabelige metoder utilstrækkelige. Antag for eksempel at vi interesserer os for danske statsministres retorik med afsæt i et datasæt med statsministres nytårstaler mellem 1985 og 2020. Med bare 36 taler er datasættet egentlig ret småt, men ustrukturerede tekstdata af denne type er typiske i big data-analyser, og selv dette lille eksempel illustrerer de særlige analytiske udfordringer ved big data.
 
+**make more explicit that this is mostly a text as data perspective**
+
 ## Dimensionalitetsreduktion
 
 Vi kunne for eksempel spørge os selv hvilke ord socialdemokratiske statsministre bruger særligt hyppigt sammenlignet med borgerlige statsministre. En gængs samfundsvidenskabelig tilgang til sådan et problem ville være at estimere en regressionsmodel med statsministerens partitilhørsforhold som afhængig variabel og uafhængige variable der angiver hvert enkelt ords hyppighed i den enkelte tale. Men det kan ikke lade sig gøre. En almindelig regressionsmodel kan kun estimeres hvis antallet af observationer overstiger antallet af uafhængige variable i modellen, og det er ikke tilfældet her. Faktisk har danske statsministre brugt 7.286 forskellige ord i de 36 taler. Datasættet har altså godt og vel 200 gange så mange variable som der er observationer.
@@ -195,6 +197,12 @@ emotional contagion example: @kramer2014experimental
 problem: lack of informed consent
 
 complication: under surveillance capitalism, all citizens are subject to constant experimentation w/o consent
+
+something from Weapons of Math Destruction
+
+algorithmic bias
+
+
 
 
 
