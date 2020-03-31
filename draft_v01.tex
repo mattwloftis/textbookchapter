@@ -29,7 +29,7 @@
 }
 \usepackage{hyperref}
 \hypersetup{
-            pdftitle={`Big data' og politologisk datavidenskab},
+            pdftitle={`Big data' - alternative datakilder og analysemuligheder},
             pdfauthor={Frederik Hjorth; Matt W. Loftis},
             pdfborder={0 0 0},
             breaklinks=true}
@@ -72,7 +72,7 @@
 \usepackage[]{natbib}
 \bibliographystyle{apsr}
 
-\title{`Big data' og politologisk datavidenskab}
+\title{`Big data' - alternative datakilder og analysemuligheder}
 \providecommand{\subtitle}[1]{}
 \subtitle{Udkast, april 2020}
 \author{Frederik Hjorth \and Matt W. Loftis}
@@ -104,11 +104,9 @@ metoder, begrebet big data dækker over. Først opridser vi begrebets
 betydning og historie. Dernæst diskuterer vi hvordan en række
 karakteristika ved big data skaber særlige udfordringer i forhold til at
 udvikle stærke forskningsdesigns. Herefter præsenterer vi en række
-specifikke tekniske værktøjer til behandling af big data. Afslutningsvis
+specifikke typer af metoder til behandling af big data. Afslutningsvis
 opridser vi nogle væsentlige etiske problematikker i relation til brugen
 af big data.
-
-cites: \citet{mullainathan2017machine}, \citet{varian2014big}
 
 \hypertarget{hvad-er-big-data}{%
 \section{Hvad er big data?}\label{hvad-er-big-data}}
@@ -199,6 +197,9 @@ eneste spørgeskema. Men selv om data er genereret på forhånd er det ikke
 ligetil at \emph{anskaffe} sig data. Der er groft sagt tre måder man kan
 gøre det på.
 
+\hypertarget{scraping}{%
+\subsection{Scraping}\label{scraping}}
+
 Den første og mest umiddelbare måde er at udtrække data direkte fra
 websider, typisk kaldet \emph{scraping}. Scraping udnytter at indholdet
 på de fleste større websider kommer fra databaser som fremstiller
@@ -233,18 +234,23 @@ datamængder er det også en kontroversiel praksis. Et illustrativt
 eksempel på det kommer fra en meget omtalt juridisk strid mellem det
 sociale netværk LinkedIn og analysefirmaet HiQ. En del af HiQ's
 forretningsmodel er at analysere arbejdsmarkedet for it-specialister, og
-HiQ har bl.a. høstet data ved at scrape data fra offentlige profiler på
-LinkedIn. I 2017 sagsøgte LinkedIn HiQ med påstand om at HiQ's
-scraping-praksis var et brud på amerikansk it-lovgivning. HiQ fik til
-sidst medhold i at virksomheden kunne scrape data fra offentlige
-LinkedIn-sider uden tilsagn fra LinkedIn, men sagen illustrerer at
-scraping ofte finder sted i en juridisk gråzone.
+HiQ har bl.a. høstet data ved at scrape oplysninger om individuelle
+it-specialister fra offentlige profiler på LinkedIn. I 2017 sagsøgte
+LinkedIn HiQ med påstand om at HiQ's scraping-praksis var et brud på
+amerikansk it-lovgivning. HiQ fik til sidst medhold i at virksomheden
+kunne scrape data fra offentlige LinkedIn-sider uden tilsagn fra
+LinkedIn, men sagen illustrerer at scraping ofte finder sted i en
+juridisk gråzone.
 
-Kodestumpen om \emph{Lov om ophævelse af lov om skoleskibsafgift} kommer
-fra Retsinformation, og det er som hovedregel ikke forbudt at scrape
-data fra offentlige hjemmesider, så længe man ikke urimeligt belaster
-udbyderens servere. Man bør dog uanset kilden altid sikre sig tilsagn
-fra dataudbyderen før man går i gang med at scrape data.
+Kodestumpen om \emph{Lov om ophævelse af lov om skoleskibsafgift} i
+eksemplet ovenfor kommer fra Retsinformation, og det er som hovedregel
+ikke forbudt at scrape data fra offentlige hjemmesider, så længe man
+ikke urimeligt belaster udbyderens servere. Man bør dog uanset kilden
+altid sikre sig tilsagn fra dataudbyderen før man går i gang med at
+scrape data.
+
+\hypertarget{apier}{%
+\subsection{API'er}\label{apier}}
 
 En anden måde at hente data på er gennem såkaldte API'er. API står for
 \emph{Application Programming Interface} og er en slags kontrolleret
@@ -256,17 +262,20 @@ ad gangen.
 
 Princippet om at big data ikke er lavet for samfundsforskningens skyld
 gælder også for API'er. Det egentlige formål for de fleste API'er er at
-dele data på tværs af kommercielle platforme. For eksempel er det API'er
+dele data på tværs af kommercielle platforme. For eksempel er der API'er
 der muliggør at et online-medie kan vise hvilke af ens egne
 Facebook-venner der har `liket' en specifik artikel, fordi avisen kan
 tilgå data om læserens Facebook-netværk gennem Facebooks API. Men mange
 sociale netværk stiller meget righoldige data til rådighed for forskere
 gennem API'er. For eksempel bruger \citet{hjorth2019}, som studerer
-rækkevidden af online misinformation, Twitters API til at indsamle data
+fordelingen af online misinformation, Twitters API til at indsamle data
 om ca. 13 millioner følgere af ca. 10.000 Twitter-konti. Offentlige
 myndigheder stiller også i stigende grad data til rådighed gennem
 API'er. Eksempelvis stiller Folketinget data om medlemmer, forhandlinger
 og lovarbejde til rådighed gennem en API.
+
+\hypertarget{datasamarbejder}{%
+\subsection{Datasamarbejder}\label{datasamarbejder}}
 
 En tredje måde at få adgang til big data er gennem et egentligt
 samarbejde med virksomheder der lagrer big data. For eksempel
@@ -276,7 +285,7 @@ Facebook-brugere fik om deres venners stemmeadfærd. I kraft af
 samarbejdet kunne forskerne udføre eksperimentet i en uhørt stor skala:
 eksperimentet involverede i alt 61 millioner Facebook-brugere.
 
-Studiet af Bond m.fl. er exceptionelt fordi det kombinerer kvaliteterne
+Studiet af Bond et al.~er exceptionelt fordi det kombinerer kvaliteterne
 ved big data og eksperimentel metode. Mange forskere gør derfor også en
 stor indsats for at etablere samarbejder med virksomheder og
 organisationer der kan give dem adgang til data, der ellers ville være
@@ -297,247 +306,472 @@ Facebook.
 \section{Big data og
 forskningsdesign}\label{big-data-og-forskningsdesign}}
 
-Big data has applications in political science in empirical studies of
-all types, from description to explanation, prediction, and causal
-studies. Although these applications are only beginning across the
-social sciences, the past 15 years have provided enough experience that
-we can already point to one strong finding that can always guide us when
-we apply big data in our work: research design still matters
-\citetext{\citealp[see][p.~13]{toshkov16}; \citealp{CG15}}. Here we
-discuss aspects of research design that deserve special attention when
-working with big data, namely, biases in the data and the definition of
-the unit of analysis.
+Big data kan anvendes til alle typer empiriske politologiske
+forskningsspørgsmål, det være sig deskriptive eller forklarende,
+forudsigende eller kausale spørgsmål. Selvom vi endnu kun er begyndt at
+se disse anvendelser udfolde sig, har vi i de seneste 15 år fået
+erfaringer nok til at kunne pege på én vigtig rettesnor når vi anvender
+big data: forskningsdesign er stadig altafgørende
+\citetext{\citealp[jf.][s. 13]{toshkov16}; \citealp{CG15}}. I afsnittet
+her diskuterer vi aspekter af forskningsdesign som kræver særlig
+opmærksomhed når man arbejder med big data. Det drejer sig dels om
+forskellige typer biases, dels om vigtigheden af at definere sin
+analyseenhed.
 
-\emph{Familiar sampling bias}
+\hypertarget{velkendt-sampling-bias}{%
+\subsection{Velkendt sampling bias}\label{velkendt-sampling-bias}}
 
-Perhaps the most heady idea about big data was expressed best in a, now
-infamous, article in \emph{Wired} magazine by Chris \citet{anderson08}
--- the idea that big data eliminates sampling problems because
-\emph{n}=all. That is, one can analyze \emph{all of the data}. The
-article has met with a good deal of attention and pushback in the years
-since it was published. In early 2020, it boasts more than 2.000
-citations on Google Scholar. To put that in perspective, Maurice
-Duverger's famous book \emph{Political Parties}, the origin of the
-eponymous Duverger's Law, was published in 1959 and counts just over
-7.000 citations.
+Den måske mest vidtløftige idé om big data kom til udtryk i en nu
+berygtet artikel i \emph{Wired Magazine} af tidsskriftets stifter, Chris
+Anderson {[}anderson08{]}: idéen om at big data eliminerer
+stikprøveproblemer fordi `\emph{n}=alt'. Med andre ord, big data gør det
+muligt at analysere \emph{alle data}, ikke blot en stikprøve. Artiklen
+har fået stor opmærksomhed og masser af kritik siden den udkom. I
+begyndelsen af 2020 havde artiklen mere end 2.000 citationer på Google
+Scholar. For at sætte det i perspektiv har Maurice Duvergers berømte bog
+\emph{Political Parties}, kilden til den navnkundige Duverger's Lov,
+samlet lidt mere end 7.000 citationer siden den udkom i 1959.
 
-As a concept, \emph{n}=all implies that big data can be taken at face
-value. Its patterns reveal a complete picture of human behavior.
-Unfortunately, the selection problem is still with us. It arises
-whenever observations enter your data for reasons that systematically
-relate to the outcome variable. \citet{AP08} illustrate the problem with
-an example from the United States' National Health Interview Survey, in
-which individuals are asked to rate their health on a scale. Perhaps
-unsurprisingly, they find that individuals in hospitals consistently
-rate their health as worse than those out of hospital. Then they pose an
-interesting question: should we conclude that hospitals make people
-sicker? The answer is, of course, no. We know that because we already
-understand that individuals in hospital \emph{selected} into being there
-precisely because they were sick. Failing to recognize that would result
-in sampling bias.
+Som begreb indebærer `\emph{n}=alt' at big data kan aflæses uden
+forbehold: mønstrene i big data tegner et komplet billede af menneskelig
+adfærd. Sandheden er imidlertid at vi ikke med big data slipper for at
+bekymre os om selektionsproblemer. Selektionsproblemer opstår i alle
+situationer hvor observationer figurerer i data af grunde der hænger
+systematisk sammen med vores afhængige variabel. \citet{AP08} illusterer
+problemet med et eksempel fra en stor amerikansk
+folkesundhedsundersøgelse, hvor respondenter i et survey bedes om at
+angive deres sundhedstilstand på en skala. Ikke overraskende konstaterer
+forskerne at personer der er indlagt på hospitalet konsekvens udviser et
+ringere helbred end personer der ikke er indlagt. Skal vi heraf
+konkludere at hospitaler gør folk mere syge? Svaret er indlysende nej.
+Det er indlysende, fordi vi i forvejen ved at individer selekterer sig
+ind i hospitaler netop fordi de er syge til at begynde med. Hvis man
+ignorerede dette selektionsproblem ville man ende med sampling bias.
 
-Similar situations regularly arise with big data. For example,
-\citet{harford14} recounts the story of Boston's experiment with using
-cell phone tracking to identify pot holes in the city's streets that
-need repair. The result was that the city discovered every pothole in
-neighborhoods frequented by young, affluent drivers--the profile of the
-type of person who owned a smart phone and downloaded the city's app.
-Uncovering a similar problem, \citet{TSSW10} confirm a finding in
-previous research that Twitter mentions of German parties correlated
-strongly with their vote share in the 2009 parliamentary elections, with
-one major exception. The extremely online \emph{Pirate Party} garned a
-huge number of mentions on Twitter while receiving a tiny fraction of
-the actual vote. In both of these cases, if \emph{n}=all then it equals
-``all'' of a specific, self-selected group of technology users.
+Tilsvarende situationer opstår hele tiden i arbejdet med big data. For
+eksempel beretter \citet{harford14} om den amerikanske by Bostons
+erfaringer med at bruge smartphonedata til at registrere asfalthuller i
+byens vejnet. En særlig app som indbyggere i Boston kunne installere
+registrerede bump i vejen ved hjælp af smartphonens indbyggede
+accelerometer, og kunne på den måde kortlægge byens asfalthuller.
+Resultatet af projektet var at byen opdagede alle asfalthuller i
+kvarterer hvor yngre, velstående bilister færdedes -- netop den type
+person som ville være mest tilbøjelig til at eje en smartphone og
+downloade byens app. \citet{TSSW10} påpeger et lignende problem i
+tidligere forskning som har forsøgt at forudsige valgresultater med
+Twitter-data. Twitter-omtale forudsiger ganske rigtig partiopbakning
+glimrende ved Tysklands forbundsvalg i 2009 -- med én slående
+undtagelse. Det ekstremt online \emph{Piratpartiet} fik en kolossal
+mængde Twitter-omtale men en meget lille andel af de faktiske stemmer. I
+begge disse eksempler gælder `\emph{n}=alt' alene for en meget specifik,
+selvselekteret gruppe af særligt sofistikerede teknologibrugere.
 
-Ignoring sampling bias has always meant that researchers risked finding
-the wrong answer. Using big data with biased samples simply means now we
-get extremely precise estimates of the wrong answer.
+Det har således altid været tilfældet at man risikerer at få de forkerte
+svar hvis man ikke tager højde for sampling bias. Hvis man bruger big
+data med en biased stikprøve får man plot et ekstremt præcist estimat af
+det forkerte svar.
 
-\emph{Special headaches for big data}
+\hypertarget{suxe6rlige-problemer-ved-big-data}{%
+\subsection{Særlige problemer ved big
+data}\label{suxe6rlige-problemer-ved-big-data}}
 
-Big data confronts us with new sources of bias and confounding. Perhaps
-the most famous example for social scientists is that of Google Flu
-Trends (GFT). GFT was a Google project launched in 2008 that predicted
-regional flu epidemics from fine-grained data on users' Google queries
-about likely flu symptoms \citep{Getal2009}. After initially receiving
-attention for its impressive accuracy, GFT's predictive performance
-began to diminish over time until--by the time the project was shuttered
-in 2015--for years it had produced inaccurately high forecasts5
-sometimes as great as double the number of flu reported by the U.S.
-Centers for Disease Control and Prevention \citep{harford14}. The
-reasons for GFT's collapse are instructive for understanding both why
-research design still matters and what new headaches come with big data.
+Big data stiller os ikke blot over for velkendte kilder til bias, men
+også nye af slagsen. Det måske mest berømte eksempel kommer fra
+projektet \emph{Google Flu Trends}. Google Flu Trends var et
+Google-projektet som blev lanceret i 2008 med en ambition om at foudsige
+regionale influenza-epidemier ved hjælp af finkornede data om
+Google-søgninger efter typiske inluenza-symptomer \citep{Getal2009}. Til
+at begynde med demonstrerede GFT en evne til med imponerende nøjagtighed
+at forudsige influenza-epidemier langt hurtigere end de amerikanske
+sundhedsmyndigheder kunne. Men over tid blev GFTs performance ringere.
+Da projektet blev lukket i 2015 havde GFT i årevis forudsagt langt
+større influenzaepidemier end dem det amerikanske \emph{Centers for
+Disease Control and Prevention}, svarende til den danske
+Sundhedsstyrelse, kunne konstatere \citep{harford14}. Årsagerne til GFTs
+deroute illusterer både vigtigheden af forskningsdesign generelt og
+nogle af de specifikke nye udfordringer big data bringer med sig.
 
-Several things contributed to GFT's problems, but the most noteworthy
-seems to have arisen after Google adjusted its main search service
-\citep[see][]{LKKV14}. Like any organization that produces or processes
-big data, Google changes its service or its algorithms from time to
-time. In 2011 and 2012, Google added functions to its search service
-that suggested additional search terms to users, based on their original
-search terms. It even suggested possible diagnoses for search terms that
-involved disease symptoms. The upshot was an apparent feedback loop:
-users of Google search were nudged to refine their searches for symptoms
-and to seek out information on the flu, intensifying the signals that
-GFT relied on to predict flu outbreaks. There is more to GFT's story, of
-course, but this part of it points out some special features of big data
-researchers must consider to avoid sampling bias. As \citet{salganik17}
-puts it, big data is \emph{algorithmically confounded}, \emph{dirty},
-and \emph{drifting}.
+Der var flere kilder til GFTs problemer, men det vigtigste lader til at
+have været Googles egen justering af dets søgemaskine \citep{LKKV14}.
+Ligesom alle andre organisationer der producerer eller bearbejder big
+data ændrer Google fra tid til anden sine algoritmer. I 2011 og 2012
+tilføjede Google en funktion til søgemaskinen som foreslår yderligere
+søgetermer på baggrund af hvilke termer brugeren har indtastet. De nye
+funktioner foreslog endog mulige diagnoser når brugeren indtastede
+symptomer på kendte sygdomme. De nye funktioner skabte dermed en
+feedback-effekt: brugere af Googles søgemaskine blev ansporet til at
+justere deres søgninger efter symptomer og opsøge information om
+influenza. Denne informationssøgning forstærkede de signaler GFT brugte
+til at forudsige influenzaudbrud. Der er flere nuancer i historien, men
+denne feedback-effekt illustrerer nogle af de centrale udfordringer ved
+big data. Som \citet{salganik17} formulerer det er big data
+\emph{algoritmisk konfunderet}, \emph{beskidt} og \emph{glidende}.
 
-Algorithmic confounding happens when computer behavior interacts with
-human behavior in a system, altering the human behavior we want to
-study. GFT is an example, since computer behavior--the Google search
-algorithm's recommendations--interacted with the human behavior that GFT
-relied on to predict flu outbreaks (searches for flu symptoms). Google's
-search suggestions altered users' perceptions of their symptoms and led
-them to different search behavior.
+Algoritmisk konfundering finder sted når computeres adfærd interagerer
+med menneskelig adfærd i et system og derigennem påvirker den
+menneskelige adfærd vi interesserer os for. GFT er et eksempel på
+algoritmisk konfundering, da computerens adfærd -- Google-søgemaskinens
+forslag til søgetermer -- interagerede med den menneskelige adfærd GFT
+brugte til at forudsige influenzaudbrud. Googles forslag til søgetermer
+ændrede brugernes egen opfattelse af deres symptomer og ansporede dem
+til en anden søgeadfærd.
 
-By ``dirty,'' \citet{salganik17} means that big data also contains false
-positives in the form of computer behavior that is mistaken for human
-behavior. For example, at least a portion of Google's additional search
-traffic around flu syptoms may have been purely accidental, caused only
-by the search engine's suggestions. Smart phone users will recognize
-this problem as an autocorrect fail. An example that occassionaly makes
-headlines would be the presence of large numbers of ``bots'' on social
-media platforms. Bots are accounts that are not operated by human users,
-but rather are simply software programs executing automated behaviors in
-the form of liking, following, or commenting. Despite Twitter and other
-platforms' occasional purges of bot accounts, an unspecified and
-probably high number of bots persist. Any analysis of social media data
-must think carefully about how to clean the data to eliminate as much
-bot behavior as possible.
+Med `beskidt' refererer \citet{salganik17} til det forhold at big data
+indeholder falske positiver i form af computeradfærd som nemt kan
+forveksles med menneskelig adfærd. For eksempel har i hvert fald en del
+af Googles ekstra søgeaktivitet været utilsigtet, og alene forårsaget af
+søgemaskinens egne forslag. Ejere af en smartphone vil genkende dette
+problem som en autocorrect-fejl. Et andet, prominent eksempel er
+tilstedeværelsen af store antal `bots' på sociale medieplatforme. Bots
+er brugerkonti som ikke betjenes af mennesker, men i stedet af små
+stykker software som udfører programmeret adfærd i form af at like,
+følge eller kommentere andre brugeres opslag. Til trods for Twitter og
+andre platforms tilbagevendende udrensninger af bots vedbliver der at
+være et ukendt og formentlig stort antal bots på sociale medier. Enhver
+analyse af data fra sociale medier må derfor tænke nøje over hvordan man
+kan rense data for at undgå at forveksle bot-adfærd med menneskelig
+adfærd.
 
-Drift refers to the occasional changes that occur in how big data are
-collected, a problem we foreshadowed in the first section. GFT was a
-victim of the drift in Google's search data that occurred after the
-introduction of search suggestions in 2011. Fundamentally, GFT's data
-before and after 2011 came from different populations--one in which
-users were treated with nudges and the other without that treatment.
-Therefore, these data were impossible to compare. Take note. GFT was an
-internal project, and yet the GFT team missed changes that their Google
-search colleagues introduced. Researchers using big data must stay aware
-of how their data may have drifted.
+`Glidning' refererer til de forandringer der fra tid til anden finder
+sted i måde hvorpå big data indsamles. GFT var offer for glidning i
+hvordan Google-søgetermer blev indsamlet efter introduktionen af forslag
+til søgetermer i 2011 og 2012. Helt grundlæggende kom GFTs data før og
+efter dette skifte fra forskellige populationer -- en hvor brugere fik
+forslag til søgetermer og en hvor de ikke gjorde. I kraft af denne
+forskel er de to populationer usammenlignelige. Det er her værd at
+bemærke at GFT var et virksomhedsinternt projekt. Alligevel var
+ingeniørerne bag GFT ikke opmærksomme på de ændringer i søgemaskinen som
+deres egne kolleger havde introduceret. Forskere der analyserer big data
+bør være særligt opmærksomme på hvordan deres datakilder kan være gledet
+bort fra deres oprindelige karakter.
 
-\emph{Overcoming biases in big data}
+\hypertarget{ruxe5d-til-huxe5ndtering-af-biases-i-big-data}{%
+\subsection{Råd til håndtering af biases i big
+data}\label{ruxe5d-til-huxe5ndtering-af-biases-i-big-data}}
 
-These biases have no general cure, but adopting good practices can
-ensure you catch many problems before they become threats to the
-validity of your research design. First, get to know your data. If you
-collect your data from an API, read its documentation carefully. If you
-take it from a website, then understand everything you can about how the
-data on the site are maintained and curated--who puts it up, who can
-remove it, how it is updated, etc. Many organizations that produce and
-provide big data communicate about it, for example on company blogs or
-through press releases. Pay attention to these sources of information
-for things that can affect your research design. When in doubt, ask
-clarifying questions. Many system administrators or database managers
-are happy to help courteous researchers.
+Der findes ikke én overordnet kur imod disse biases, men med god
+forskningsmæssig skik og brug kan du sikre dig, at du fanger dem, før de
+undergraver validiteten af din undersøgelse. Det første skridt er at
+gøre dig fortrolig med data. Hvis du indsamler dine data fra en API, bør
+du læse API'ens dokumentation grundigt. Hvis du scraper dine data fra en
+webside, bør du sætte dig ind i hvordan websiden vedligeholdes og
+kurateres -- hvem lægger sider op, hvem kan fjerne sider igen, og så
+videre. Mange organisationer der stiller data til rådighed fortæller om
+denne slags procedurer, for eksempel gennem blogs eller
+pressemeddelelser. Brug disse kilder til at lære om forhold i data, som
+kan udfordre dit forskningsdesign. Og vær ikke bange for at stille
+opklarende spørgsmål, hvis du er i tvivl. Mange systemadministratorer er
+glade for at kunne hjælpe en nysgerrig forsker eller studerende.
 
-Second, try to write down your assumptions explicitly and, whenever you
-can, directly test them like hypotheses \citep[see,][]{LBCC16}. For
-example, GFT could have tested for algorithmic confounding by examining
-whether feedback from the search engine to the user was associated with
-increases in symptom-related search terms. Social media analyses should
-test the assumption that their data are generated by humans by checking,
-for example, that individuals in the data do not post too repetitively,
-do not post inhumanly fast, and exhibit use patterns that are within
-some range of normal behavior for the platform.
+Dernæst bør du skrive dine antagelser ned og, når det er muligt, teste
+dem som egentlige hypoteser \citep{LBCC16}. For eksempel kunne GFT have
+testet for algoritmisk konfundering ved at undersøge om forslag til
+søgetermer hang systematisk sammen med stigninger i antallet af
+søgninger efter influenzasymptomer. I en analyse af data fra sociale
+medier kan man undersøge antagelsen om at data er genereret af mennesker
+ved for eksempel at tjekke om brugerne ikke skriver indlæg der er
+ekstremt repetitive, skriver dem med overmenneskelig hastighed, eller på
+andre måder overskrider rammerne for normal menneskelig adfærd på det
+sociale medie.
 
-Finally, develop a habit of running sanity checks, even when you do not
-anticipate problems and cannot formulate an explicit assumption. Since
-big data is, well, big, it is not realistic to look at the numbers or
-text in your data and expect to see anything useful. We do this by
-drawing pictures. Make histograms, scatterplots, and other plots of your
-variables and be sure the patterns make sense. When you discover a
-strange pattern, investigate it until you understand it. You may very
-well uncover hidden drift or the tell-tale patterns of dirty data caused
-by bots or other automated interference.
+Endelig bør du gøre det til en vane at udføre løbende kontroller af dine
+data, også når du ikke regner med problemer eller kan formulere en
+specifik antagelse om dine data. Eftersom big data er så store giver det
+ikke mening at se direkte på tallene eller teksten i data efter
+eventuelle problemer. I stedet kan visuelle hjælpemidler være nyttige.
+Lav scatterplots, histogrammer og andre visualiseringer af dine variable
+og brug dem til at verificere at mønstrene giver mening. Hvis du støder
+på et mærkværdigt eller overraskende mønster bør du undersøge det indtil
+du forstår årsagen. Det vil ofte være glidning eller beskidte data der
+forårsager det overraskende mønster.
 
-\emph{Levels of analysis and measurements on big data}
+\hypertarget{analysenheder-og-muxe5ling-i-big-data}{%
+\subsection{Analysenheder og måling i big
+data}\label{analysenheder-og-muxe5ling-i-big-data}}
 
-Theories in empirical political science come with a \emph{level of
-analysis}. For example, a theory about party behavior during election
-campaigns has a party-election level of analysis: each party at each
-election is one observation. A theory about politicians during election
-campaigns gives a necessarily larger number of observations per
-election, since each individual politician during a campaign is one
-observation. It is relatively rare in political science to express our
-theories at the level of granularity in most big data sets. It is, of
-course, entirely possible to develop a theory to explain individual
-tweets or individual laws, etc., but political science generally
-expresses its theories at a higher level (less granular) level of
-analysis.
+Politologiske teorier er altid knyttet til et bestemt analyseniveau. For
+eksempel foregår en teori om partiadfærd i valgkampe på niveauet
+`partier i valgkampe': hvert parti i hvert valgkamp udgør én
+observation. En teori om individuelle politikeres adfærd i valgkampe
+omsætter sig naturligt nok i et større antal observationer per valgkamp,
+siden hver enkelt politiker i den enkelte valgkamp udgør en observation.
+Det er ret sjældent at politologiske teorier udspiller sig på samme
+detaljerede niveau som de typisk meget fintmaskede big data. Det er
+naturligvis principielt muligt at udvikle en teori som kan forklare
+specifikke tweets, love eller taler, men politologiske teorier udspiller
+sig i almindelighed på et højere, mere aggregeret niveau.
 
-In the next section, we introduce several popular and useful methods for
-working with big data. As we will see, these methods specifically
-associated with big data have in common that they are actually
-measurement tools. We will look at methods for labeling data,
-discovering patterns, and condensing large amounts of data into simpler,
-smaller data. It is typical for political scientists applying big data
-that their ``big'' data set of a million tweets or thousands of laws
-condenses into a data set of, for example, thousands of politician-month
-observations or hundreds of government-year observations.
+I næste afsnit opridser vi de mest populære typer af metoder til at
+arbejde med big data. Som det vil fremgå har disse metoder det til
+fælles at de i realiteten er målemetoder. Vi betragter metoder til at
+kategorisere data, afdække mønstre og kondensere store mængder data til
+enklere, mindre datastrukturer. Det er typisk sådan, at politologer der
+anvender big data-metoder til deres store datasæt med millioner af
+tweets eller tusinder af love, nedkoger dem til data der består af
+eksempelvis tusinder af politiker-måned observationer eller hundreder af
+regering-år observationer.
 
-The workhorse method of observational, quantitative hypothesis-testing
-in political science, even when working with big data, remains to build
-and estimate appropriate statistical models with appropriate control
-variables. Thus, we will focus on the methodological choices that
-distinguish analyses using big data from the more familiar social
-science workflow of building a purpose-built data set arranged at the
-correct level of analysis. Readers who are familiar with qualitative
-methods will be more familiar with this pattern. For example, lengthy
-interviews or wide-ranging case studies are often condensed into a
-summary coding of theoretical concepts.
+Selv når man arbejder med big data er den gængse kvantitative,
+hypotetisk-deduktive metode i politologien at konstruere og estimere
+statistiske modeller med en passende mængde af kontrolvariable. Vi
+fokuserer derfor i næste afsnit på metodiske valg som er særlige for big
+data, og som typisk går forud for det mere velkendte kvantitative
+workflow. Disse metoder drejer sig ofte om at omdanne data til
+observationer der svarer til den teoretisk definerede analyseenhed.
+Læsere som er fortrolige med kvalitative metoder vil kende dette
+analysetrin. For eksempel reduceres lange interviews eller større
+case-studier ofte til kodninger der opsummerer centrale teoretiske
+begreber.
 
-This raises a point worth emphasizing about big data methods in
-political science. Although methods for working with big data are,
-necessarily, computational they do not necessarily mean that researchers
-must apply quantitative methodology in their overall research design.
-
-\hypertarget{measurement-stuff}{%
-\subsection{measurement stuff}\label{measurement-stuff}}
-
-\begin{itemize}
-\tightlist
-\item
-  role of big data in the research design
-
-  \begin{itemize}
-  \tightlist
-  \item
-    uncommon to directly analyze
-  \item
-    more often: measurement
-  \end{itemize}
-\end{itemize}
+Dette peger frem mod en væsentlig pointe om brugen af big data i
+politologien. Selvom metoder til at behandle big data som sådan i
+udgangspunktet er computationelle betyder det ikke at forskere partout
+skal benytte kvantitative metoder til at analysere dem i sidste ende.
+Deskriptive, kvalitative forskningsdesigns kan med stort udbytte bruges
+til at analysere outputtet af de metoder vi præsenterer herunder.
 
 \hypertarget{behandling-af-big-data}{%
 \section{Behandling af big data}\label{behandling-af-big-data}}
 
-Big data præsenterer både computationelle og analytiske udfordringer -
-vi fokuserer på analytiske
+Der er groft sagt to typer udfordringer der gør sig særligt gældende når
+man arbejder med big data. Der er for det første en mænge
+\emph{computationelle} udfordringer, dvs. rent tekniske udfordringer med
+at bearbejde datamængder der er væsentligt større end hvad en almindelig
+computer typisk skal håndtere. Computationelle udfordringer er hyppige i
+arbejde med big data. Faktisk afgrænser den oprindelige definition i
+\citet{laney01} netop big data til datamængder der overskrider en
+almindelig desktop-computers kapacitet. Det er også i praksis en
+relevant udfordring. Den første frigivelse af data fra Facebooks
+forskningssamarbejde \emph{Social Science One} bygger eksempelvis på en
+omtrent en exabyte data, svarende til en milliard gigabytes. Vi dækker
+ikke håndteringen af computationelle udfordringer nærmere her, men
+henviser til \citet{varian2014big}, som giver en tilgængelig indføring i
+forskelle tekniske metoder til håndtering af kolossale datamængder.
 
-Fællestræk: højdimensionalitet
+Vi fokuserer her i stedet på særlige analytiske udfordringer der opstår
+når man arbejder med big data. Selv hvis vi ser bort fra den rent
+tekniske håndtering af data er der stadig særpræg ved big data som ofte
+gør gængse samfundsvidenskabelige metoder utilstrækkelige. Antag for
+eksempel at vi interesserer os for danske statsministres retorik med
+afsæt i et datasæt med statsministres nytårstaler mellem 1985 og 2020.
+Med bare 36 taler er datasættet egentlig ret småt, men ustrukturerede
+tekstdata af denne type er typiske i big data-analyser, og selv dette
+lille eksempel illustrerer de særlige analytiske udfordringer ved big
+data.
 
-Fælles for metoder: dimensionalitetsreduktion
+\hypertarget{dimensionalitetsreduktion}{%
+\subsection{Dimensionalitetsreduktion}\label{dimensionalitetsreduktion}}
 
-Klassifikation ctr. skalering
+Vi kunne for eksempel spørge os selv hvilke ord socialdemokratiske
+statsministre bruger særligt hyppigt sammenlignet med borgerlige
+statsministre. En gængs samfundsvidenskabelig tilgang til sådan et
+problem ville være at estimere en regressionsmodel med statsministerens
+partitilhørsforhold som afhængig variabel og uafhængige variable der
+angiver hvert enkelt ords hyppighed i den enkelte tale. Men det kan ikke
+lade sig gøre. En almindelig regressionsmodel kan kun estimeres hvis
+antallet af observationer overstiger antallet af uafhængige variable i
+modellen, og det er ikke tilfældet her. Faktisk har danske statsministre
+brugt 7.286 forskellige ord i de 36 taler. Datasættet har altså godt og
+vel 200 gange så mange variable som der er observationer.
 
-usuperviserede tilgange
+Vi har med andre ord at gøre med ekstremt \emph{højdimensionelle} data.
+Fordi al informationen i data er spredt ud over et stort antal variable
+er informationsværdien i hver enkelt variabel paradoksalt nok meget
+lille. Højdimensionalitet opstår ikke alene i arbejdet med tekstdata,
+men også med data om sociale netværk eller billeder. Derfor er
+\emph{dimensionalitetsreduktion} et centralt analytisk mål i næsten alle
+big data-metoder. Dimensionalitetsreduktion indebærer at man reducerer
+antallet af variable, som i big data-terminologi ofte kaldes
+\emph{features}, til et lille antal som indeholder mest mulig relevant
+information fra den oprindelige, fulde mængde af variable. Man kan tænke
+på dimensionalitetsreduktion som en måde at udtrække en information om
+en latent variabel fra et stort antal manifeste variable. Det svarer i
+princippet til forholdet mellem den teoretiske variabel og indikatorerne
+i et refleksivt indeks (jf. kapitel 18). Forskellen er blot at antallet
+af manifeste variable i big data er langt højere.
 
-superviserede tilgange
+\hypertarget{klassifikation-og-skalering}{%
+\subsection{Klassifikation og
+skalering}\label{klassifikation-og-skalering}}
+
+Det er det konkrete forskningsspørgsmål der afgør hvad der er `relevant'
+information i det oprindelige datasæt, og dermed også hvilken metode til
+dimensionalitetsreduktion der er mest passende. Men et godt udgangspunkt
+er at gøre sig klart hvilken latent variabel man er interesseret i at
+måle. Karakteren af denne latente variabel vil være afgørende for
+hvilken konkret analysemetode man skal tage i brug. En særligt vigtig
+sondring er om variablen er nominal- eller intervalskaleret.
+
+Hvis den latente variabel er intervalskaleret skal man bruge en metode
+til \emph{skalering}. Her placerer man altså hver enkel enhed på en
+numerisk skala der kan fortolkes intervalskaleret. I eksemplet med
+statsministres nytårstaler kunne man interessere sig for om
+venstre-højre-ideologi kommer til udtryk i talerne. Her ville en
+skaleringsmetode placere alle talerne på en venstre-højre-dimension.
+Metoderne \emph{Wordscores} og \emph{Wordfish}, som præsenteres i
+kapitel 12, er begge skaleringsmetoder udviklet af politologer.
+
+Hvis den latente variabel er nominalskaleret giver det per definition
+ikke mening at tilskrive hver enhed en numerisk værdi. Her har vi i
+stedet at gøre med \emph{klassifikation}, dvs. at hver enhed tilknyttes
+en teoretisk bestemt kategori. Man kunne for eksempel med afsæt i
+teorien om emneejerskab interessere sig for hvilke emner statsministre
+prioriterer i deres nytårstaler. Har har vi at gøre med et
+klassifikationsproblem, idet målet ikke er at placere alle
+observationerne på samme kontinuerte skala, men i stedet at knytte hver
+enkelt observation til en kategori (eller evt. probabilistisk til flere
+kategorier). I analyser af tekstdata er såkaldte emnemodeller
+(\emph{topic models}) en meget udbredt metode til at klassificere
+tekster.
+
+\hypertarget{superviserede-og-usuperviserede-tilgange}{%
+\subsection{Superviserede og usuperviserede
+tilgange}\label{superviserede-og-usuperviserede-tilgange}}
+
+En anden vigtig sondring vedrører graden af `supervision' i analysen,
+dvs. i hvilket omfang modellens forudsigelser beror på kendte værdier af
+den afhængige variabel. Denne sondring figurerer især inden for
+\emph{maskinlæring}, som er en gren af datalogien som beskæftiger sig
+med statistiske modeller til forudsigelse. Big data og maskinlæring
+betragtes tit som parallelle og tæt koblede tendenser i
+samfundsvidenskaben \citep[se også][]{bach2019maskinlaering}.
+
+På den ene side findes \emph{superviserede tilgange}. I superviseret
+maskinlæring kender vi en afhængig variabel, typisk betegnet y, som vi
+ønsker at prædiktere. Med superviserede tilgange ønsker vi at finde frem
+til den funktion, der bedst kan forudsige y på baggrund af en række
+variable. Formelt er vores model derfor: ŷ = f(X). Her er ŷ den
+forudsagte værdi af y, og målet er at ŷ skal være så god en tilnærmelse
+af y som muligt. Læringselementet består i, at modellerne selv ``lærer''
+om sammenhængen mellem X og y på baggrund af et datasæt med kendte
+værdier af y, nogle gange betegnet et \emph{training set}. Et training
+set kan for eksempel være i form af en stikprøve af data hvor
+menneskelige kodere har angivet de sande værdier af y. I superviserede
+tilgange bruger modellen sammenhængene mellem X og y i dette mindre
+datasæt til at forudsige y i resten af data. Skaleringsmetoden
+Wordscores, omtalt ovenfor, er et eksempel på superviseret læring idet
+Wordscores bruger kendte positioner for et lille antal
+`referencetekster' til at lære om sammenhængen mellem ord og positioner.
+
+Alternativet er \emph{usuperviserede tilgange}, som adskiller sig fra
+superviserede tilgange ved at man kun har adgang til X, dvs. de variable
+der findes i data. Dermed er der ingen kendte værdier af y til at
+supervisere modellen. I stedet overlades modellen så at sige til på egen
+hånd at opdage sammenhænge mellem variable. Emnemodeller, omtalt
+ovenfor, er et eksempel på usuperviseret læring idet de alene
+klassificerer tekster på baggrund af hvordan ord samvarierer på tværs af
+tekster, og altså uden at bero på input om teksters `sande'
+klassifikationer. Det samme er Wordfish, som modsat Wordscores ikke
+beror på kendte tekstpositioner.
+
+Fordelen ved usuperviseret læring er åbenlyst at man ikke behøver
+information om kendte værdier af y, som kan være vanskelig eller
+ressourcekrævende at skaffe. Ulempen er at man ikke kan vide sig sikker
+på at modellen indfanger de teoretisk interessante teorier. For eksempel
+kan en emnemodel opdele teksterne i emner på en anden måde end ens
+teoretiske forventninger tilsiger. Og under alle omstændigheder kræver
+det et betydeligt arbejde at fortolke outputtet fra en usuperviseret
+model. En måde at sammenfatte forskellen mellem superviserede og
+usuperviserede tilgange er således at med superviserede tilgange ligger
+fortolkningsarbejdet før modellen estimeres -- dvs. i udarbejdelsen af
+et training set med kendte værdier af y -- mens fortolkningsarbejdet med
+usuperviserede tilgange finder sted efter modellen er estimeret.
 
 \hypertarget{etiske-problemer-ved-big-data}{%
 \section{Etiske problemer ved big
 data}\label{etiske-problemer-ved-big-data}}
 
-emotional contagion example: \citet{kramer2014experimental}
+Med alle de nye muligheder for forskningsdesigns big data-revolutionen
+har affødt følger også etiske problemer, samfundsvidenskaben ikke før
+har skullet forholde sig til. Nogle af dem udspringer af nye muligheder
+for at foretage felteksperimenter uden deltagernes viden eller samtykke.
+Et berømt og berygtet eksempel er \citet{kramer2014experimental}, som
+betjener sig af et felteksperiment til at studere `emotional contagion',
+dvs. hvordan følelser spreder sig i sociale netværk. Det gør forfatterne
+ved i samarbejde med Facebook at manipulere hvilke opslag omkring
+700.000 Facebook-brugere ser i deres feed når de åbner Facebook. En
+tilfældigt udvalgt gruppe blev præsenteret for usædvanligt få positive
+statusopdateringer fra deres sociale netværk. Brugerne i denne gruppe
+skrev efterfølgende selv mindre positive statusopdateringer, konsistent
+med en teoretisk forventning om `emotional contagion'. (En anden gruppe
+blev præsenteret for ekstra positive statusopdateringer, og her så man
+den modsatte effekt).
 
-problem: lack of informed consent
+Eksperimentet af Kramer et al.~er kontroversielt fordi forskerne de
+facto manipulerede følelserne hos flere hundrede tusinder af mennesker
+uden deres samtykke. Forfatterne henviser selv til at brugere af
+Facebook når de opretter en profil giver samtykke til bl.a. at indgå i
+forskningsprojekter. Samtidig er det plausibelt at det havde været
+ødelæggende for eksperimentets økologiske validitet hvis man havde gjort
+det tydligt for brugerne at de var en del af et eksperiment, og at en
+vis grad af hemmeligholdelse dermed var nødvendig. Alligevel har
+forfatterne mødt kritik for eksempelvis ikke at have debriefet brugerne
+om eksperimentet \emph{efter} det fandt sted.
 
-complication: under surveillance capitalism, all citizens are subject to
-constant experimentation w/o consent
+Kritikken af dette og tilsvarende eksperimenter på online platforme
+kompliceres af at eksperimenter allerede finder sted i stor skala på
+alle de mest populære platforme. Virksomheder som Google, Facebook og
+Twitter udruller løbende eksperimenter for at lære om effekter af
+forskellige justeringer, og alle disse små eksperimenter finder sted
+uden brugernes viden eller samtykke. Man kan som modargument hævde at
+samfundsvidenskab bør operere efter strengere etiske krav end
+tech-giganter. Uanset ens position i denne debat er det en kendsgerning
+at samfundsvidenskaben i big data-æraen har mistet sit traditionelle
+monopol på eksperimentelle studier af adfærd. I stedet er studier såsom
+\citet{kramer2014experimental} blot en forsvindende lille del af de
+eksperimenter vi alle sammen indgår i samme øjeblik vi går online.
+
+En anden etisk overvejelse i relation til big data drejer sig om
+transparens. Som vi så ovenfor bruger forskellige big data-metoder
+information om sammenhænge mellem features -- og evt. mellem features og
+kendte værdier -- til at skalere eller klassificere observationer.
+Superviserede metoder lærer om relationer mellem features og kendte
+kategorier, mens usuperviserede metoder bruger multidimensionelle
+sammenhænge i data til at estimere skalaer og kategorier. Det er vigtigt
+at erindre at de sammenhænge i data, disse metoder lærer om, ikke er
+neutrale. Det skyldes at de tilgrundliggende data i sig selv ikke er
+neutrale. Data udspringer af den virkelige verden, og alle de biases der
+følger heraf, i form af både biases i grundlæggende menneskelig
+kognition og fordomme mod sociale grupper, kommer så at sige med i
+købet.
+
+Implikationen er at ukritisk læring fra data kan risikere at reproducere
+disse biases, et problem man kalder \emph{algoritmisk bias}. For
+eksempel beretter \citet{oneill16} om hvordan amerikanske
+kreditkortfirmaer markedsfører deres produkter online ud fra en såkalt
+\emph{e-score}. En e-score udregnes på baggrund af big data, som bl.a.
+inkluderer en potentiel kundes browserhistorik, geografiske position, og
+andre datapunkter. Det har den konsekvens at internetbrugere fra fattige
+egne af landet tildeles en lavere e-score. Og som konsekvens af denne
+lave e-score præsenteres disse brugere for kreditkortprodukter med
+højere renteomkostninger. På den måde reproducerer algoritmen økonomisk
+ulighed og kan endda reproducere racemæssig ulighed i samfund hvor
+racetilhørsforhold og økonomisk status i forvejen er tæt forbundne.
+
+Enhver algoritme som lærer om mønstre på baggrund af faktisk menneskelig
+adfærd vil opsamle sammenhænge af denne type -- sammenhænge som i sig
+selv er produkter af historiske uligheder med afsæt i eksempelvis race,
+køn eller etnicitet. Algoritmisk bias er i særdeleshed relevant i
+studiet af politik og offentlig forvaltning. Staten foretager hver dag
+indgribende beslutninger med store konsekvenser for borgerne. Det gælder
+for eksempel når socialrådgivere skal afgøre om et barn skal anbringes
+uden for hjemmet, eller når jobcentre skal hjælpe ledige tilbage på
+arbejdsmarkedet. Hvis man trænede en klassifikationsmodel til disse
+problemer på historiske data ville en sådan model arve alle de biases og
+uligheder der har præget historiske afgørelser på området.
+
+Her er transparens en afgørende værdi. Hvad end man betjener sig af big
+data til forskning, kommerciel virksomhed eller myndighedsudøvelse er
+det afgørende at granske sine modeller for algoritmisk bias.
+Udfordringen er her at mange modeller i big data er så komplicerede at
+de er vanskelige eller endog umulige at gennemskue. Det står i
+modsætning til den relativt enkle logik i eksempelvis lineær regression
+\citep{blackbox}. Derfor er det op til undersøgeren at granske modellen
+efter bias ved at efterprøve modellens forudsigelser under forskellige
+kombinationer af inputs. Algoritmisk transparens nyder stor opmærksomhed
+som forskningsområde i datalogien. Men der findes ingen teknik der kan
+gøre det ud for omhyggelig efterprøvning af modellens forudsigelser og
+en grundlæggende fortrolighed med data.
 
 \bibliography{references.bib}
 
